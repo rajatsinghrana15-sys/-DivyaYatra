@@ -877,7 +877,9 @@ app.get("/api/auth/me", auth, (req, res) => res.json({ user: safe(req.user) }));
 app.patch("/api/auth/admin-profile", auth, admin, async (req, res) => {
   try {
     const name = String(req.body.name || "").trim();
-    const email = String(req.body.email || "").trim().toLowerCase();
+    const email = String(req.body.email || "")
+      .trim()
+      .toLowerCase();
     const password = String(req.body.password || "");
     const confirmPassword = String(req.body.confirmPassword || "");
     if (!name || !email)
@@ -889,18 +891,27 @@ app.patch("/api/auth/admin-profile", auth, admin, async (req, res) => {
     const updates = { name, email };
     if (password) {
       if (password.length < 8)
-        return res.status(400).json({ message: "Password must be at least 8 characters." });
+        return res
+          .status(400)
+          .json({ message: "Password must be at least 8 characters." });
       if (password !== confirmPassword)
-        return res.status(400).json({ message: "Password and confirmation do not match." });
+        return res
+          .status(400)
+          .json({ message: "Password and confirmation do not match." });
       updates.password = await bcrypt.hash(password, 12);
     } else if (confirmPassword) {
-      return res.status(400).json({ message: "Enter a new password to confirm it." });
+      return res
+        .status(400)
+        .json({ message: "Enter a new password to confirm it." });
     }
     const user = await User.findByIdAndUpdate(req.user._id, updates, {
       new: true,
       runValidators: true,
     });
-    res.json({ token: jwt.sign({ id: user._id }, SECRET, { expiresIn: "7d" }), user: safe(user) });
+    res.json({
+      token: jwt.sign({ id: user._id }, SECRET, { expiresIn: "7d" }),
+      user: safe(user),
+    });
   } catch (e) {
     sendError(res, e);
   }
@@ -1694,9 +1705,14 @@ app.get("/api/categories", async (_, res) => {
 app.post("/api/categories", auth, perm("categories"), async (req, res) => {
   try {
     const name = String(req.body.name || "").trim();
-    if (!name) return res.status(400).json({ message: "Category name is required." });
-    if (await Category.exists({ name: new RegExp(`^${escapeRegex(name)}$`, "i") }))
-      return res.status(409).json({ message: "A category with this name already exists." });
+    if (!name)
+      return res.status(400).json({ message: "Category name is required." });
+    if (
+      await Category.exists({ name: new RegExp(`^${escapeRegex(name)}$`, "i") })
+    )
+      return res
+        .status(409)
+        .json({ message: "A category with this name already exists." });
     res
       .status(201)
       .json(await Category.create({ ...req.body, name, slug: slug(name) }));
@@ -1709,9 +1725,17 @@ app.patch("/api/categories/:id", auth, perm("categories"), async (req, res) => {
     const d = { ...req.body };
     if (d.name !== undefined) {
       d.name = String(d.name).trim();
-      if (!d.name) return res.status(400).json({ message: "Category name is required." });
-      if (await Category.exists({ _id: { $ne: req.params.id }, name: new RegExp(`^${escapeRegex(d.name)}$`, "i") }))
-        return res.status(409).json({ message: "A category with this name already exists." });
+      if (!d.name)
+        return res.status(400).json({ message: "Category name is required." });
+      if (
+        await Category.exists({
+          _id: { $ne: req.params.id },
+          name: new RegExp(`^${escapeRegex(d.name)}$`, "i"),
+        })
+      )
+        return res
+          .status(409)
+          .json({ message: "A category with this name already exists." });
       d.slug = slug(d.name);
     }
     if (!(await Category.exists({ _id: req.params.id })))
@@ -1733,7 +1757,8 @@ app.delete(
   async (req, res) => {
     try {
       const category = await Category.findById(req.params.id);
-      if (!category) return res.status(404).json({ message: "Category not found." });
+      if (!category)
+        return res.status(404).json({ message: "Category not found." });
       const tripCount = await Trip.countDocuments({ category: req.params.id });
       if (tripCount)
         return res.status(409).json({
@@ -1846,7 +1871,9 @@ app.post("/api/trips", auth, perm("trips"), async (req, res) => {
 app.patch("/api/trips/:id", auth, perm("trips"), async (req, res) => {
   try {
     if (!mongoose.isValidObjectId(req.params.id))
-      return res.status(400).json({ message: "A valid trip ID is required to edit a trip." });
+      return res
+        .status(400)
+        .json({ message: "A valid trip ID is required to edit a trip." });
     const d = validateTripPickup({ ...req.body });
     if (d.title) d.slug = slug(d.title);
     const trip = await Trip.findByIdAndUpdate(req.params.id, d, {
@@ -2907,21 +2934,27 @@ async function seedVehicles() {
 
 async function startServer() {
   try {
-    await mongoose.connect(
-      process.env.MONGODB_URI ||
-        "mongodb://127.0.0.1:27017/yatra_sang_raghuvanshi",
-      { serverSelectionTimeoutMS: 10000 },
-    );
+    if (!process.env.MONGODB_URI) {
+      throw new Error("MONGODB_URI is missing in environment variables.");
+    }
+
+    await mongoose.connect(process.env.MONGODB_URI, {
+      serverSelectionTimeoutMS: 10000,
+    });
+
+    console.log("MongoDB connected successfully.");
+
     await seedExamples();
     await seedVehicles();
-    app.listen(PORT, () => console.log(`Yatra API listening on ${PORT}`));
+
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Yatra API listening on ${PORT}`);
+    });
   } catch (error) {
-    console.error(
-      "Could not start the Yatra API. Check that MongoDB is running and MONGODB_URI, Atlas Network Access, and credentials are correct.",
-    );
-    console.error(error.message);
-    await mongoose.disconnect().catch(() => {});
-    process.exitCode = 1;
+    console.error("Could not start the Yatra API:", error.message);
+    process.exit(1);
   }
 }
+
+startServer();
 startServer();
