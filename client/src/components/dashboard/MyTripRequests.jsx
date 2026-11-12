@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CalendarDays, Inbox, MapPin, Users } from "lucide-react";
+import { CalendarDays, Inbox, Users, Wallet, CarFront, Info } from "lucide-react";
 import { api } from "../../services/api";
 import { cash, dateFmt } from "../../services/format";
 import { useApp } from "../../context/AppContext";
@@ -37,13 +37,16 @@ export default function MyTripRequests() {
   if (error && !requests.length) return <div className="emptyState"><Inbox /><h3>Trip requests could not load</h3><p>{error}</p></div>;
   if (!requests.length) return <div className="emptyState"><Inbox /><h3>No custom trip requests yet</h3><p>Send a request using the form above and check back here for updates.</p></div>;
 
-  return <div className="bookingList myTripRequestList">{requests.map((item) => <article className="myBooking myTripRequest" key={item._id}>
-    <div className="myBookingInfo"><span className={`status ${item.status}`}>{item.status.replaceAll("_", " ")}</span><h3>{item.destination}</h3><p><MapPin />{item.trip?.title || "Custom trip request"}<CalendarDays />{dateFmt(item.travelDate)}</p>
-      <small><Users /> {item.travelers} travellers · {groupName[item.groupType] || item.groupType}</small><small>Pickup requested: {item.pickupLocation}</small>
-      {item.quoteAmount > 0 && <b className="tripRequestQuote">Admin quote: {cash(item.quoteAmount)}</b>}
-      {item.adminNote && <p className="tripRequestAdminUpdate">Update from the trip team: {item.adminNote}</p>}
-      {item.status === "approved" && <small>Your trip request is approved. Contact the trip team to complete the booking details.</small>}
-      <small className="bookingUpdateNote">Last updated {dateFmt(item.updatedAt)} · checks for updates automatically</small>
+  return <div className="myTripRequestList">{requests.map((item) => <article className="myTripRequest" key={item._id}>
+    <div className="myTripRequestHeader"><div><span className={`status ${item.status}`}>{item.status.replaceAll("_", " ")}</span><h3>{item.destination || "Custom trip request"}</h3></div><span className="myTripRequestType">{item.trip?.title || "Trip planned with our team"}</span></div>
+    <div className="myTripRequestFacts">
+      <div><CalendarDays /><span><small>Preferred departure</small><b>{dateFmt(item.travelDate)}</b></span></div>
+      <div><Users /><span><small>Group</small><b>{item.travelers} {Number(item.travelers) === 1 ? "traveller" : "travellers"} · {groupName[item.groupType] || item.groupType}</b></span></div>
+      <div><CarFront /><span><small>Pickup requested</small><b>{item.pickupLocation || "Not provided"}</b></span></div>
     </div>
+    {item.quoteAmount > 0 && <div className="myTripRequestQuote"><Wallet /><span><small>Quote from the trip team</small><b>{cash(item.quoteAmount)}</b></span></div>}
+    {item.adminNote && <div className="myTripRequestAdminUpdate"><Info /><span><b>Update from the trip team</b><small>{item.adminNote}</small></span></div>}
+    {item.status === "approved" && <p className="myTripRequestApproved">Your request is approved. Contact the trip team to complete the booking details.</p>}
+    <small className="myTripRequestUpdated">Last updated {dateFmt(item.updatedAt)} · this page checks for updates automatically</small>
   </article>)}</div>;
 }

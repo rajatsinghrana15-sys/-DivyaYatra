@@ -35,27 +35,28 @@ export default function MyBookingsPage() {
             <article className="myBooking" key={b._id}>
               <img src={b.trip?.images?.[0] || fallback} alt="" />
               <div className="myBookingInfo">
-                <span className={`status ${b.status}`}>{b.status}</span>
-                <h3>{b.trip?.title || "Journey"}</h3>
-                <p>
-                  <MapPin />
-                  {b.trip?.destination}
-                  <CalendarDays />
-                  {dateFmt(b.travelDate)}
-                </p>
-                <small>
-                  {b.travelers} traveller(s) · {cash(b.totalAmount)}
-                </small>
-                {b.travelerCounts && <small className="myBookingSeats">{b.travelerCounts.men || 0} adult men · {b.travelerCounts.women || 0} adult women · {b.travelerCounts.children || 0} children</small>}
-                {b.seatNumbers?.length > 0 && <small className="myBookingSeats">Seats: {b.seatNumbers.join(", ")}</small>}
-                {b.pickupLocation && <small className="myBookingSeats">Pickup point: {b.pickupLocation}</small>}
-                {b.pickupLocation && <a className="pickupMapAction" href={pickupMapUrl(b.trip, b.pickupLocation)} target="_blank" rel="noreferrer">Open pickup map</a>}
-                {b.pickupAddress && <small className="myBookingSeats">Door-to-door address: {b.pickupAddress}</small>}
-                {b.paymentStatus && <small className="myBookingSeats">Payment: {b.paymentStatus.replaceAll("_", " ")}</small>}
-                {b.status === "cancelled" && b.cancellationCharge > 0 && <small className="myBookingSeats">Cancellation charge: {cash(b.cancellationCharge)} · Estimated refund: {cash(b.refundAmount || 0)}</small>}
+                <div className="myBookingHeading">
+                  <span className={`status ${b.status}`}>{b.status.replaceAll("_", " ")}</span>
+                  <h3>{b.trip?.title || "Journey"}</h3>
+                </div>
+                <div className="myBookingFacts">
+                  <div><MapPin /><span><small>Destination</small><b>{b.trip?.destination || "Details pending"}</b></span></div>
+                  <div><CalendarDays /><span><small>Departure</small><b>{dateFmt(b.travelDate)}</b></span></div>
+                  <div><Users /><span><small>Travellers</small><b>{b.travelers} {Number(b.travelers) === 1 ? "person" : "people"}</b></span></div>
+                </div>
+                <div className="myBookingExtras">
+                  {b.travelerCounts && <span className="myBookingExtra"><b>Group:</b> {b.travelerCounts.men || 0} men · {b.travelerCounts.women || 0} women · {b.travelerCounts.children || 0} children</span>}
+                  {b.seatNumbers?.length > 0 && <span className="myBookingExtra"><b>Seats:</b> {b.seatNumbers.join(", ")}</span>}
+                  {b.pickupLocation && <span className="myBookingExtra"><b>Pickup:</b> {b.pickupLocation}</span>}
+                  {b.pickupLocation && <a className="pickupMapAction" href={pickupMapUrl(b.trip, b.pickupLocation)} target="_blank" rel="noreferrer">Open pickup map <ArrowRight /></a>}
+                  {b.pickupAddress && <span className="myBookingExtra"><b>Door-to-door address:</b> {b.pickupAddress}</span>}
+                  {b.paymentStatus && <span className={`myBookingExtra paymentState ${b.paymentStatus}`}><b>Payment:</b> {b.paymentStatus.replaceAll("_", " ")}</span>}
+                  {b.status === "cancelled" && b.cancellationCharge > 0 && <span className="myBookingExtra cancellationInfo"><b>Cancellation:</b> {cash(b.cancellationCharge)} charge · {cash(b.refundAmount || 0)} estimated refund</span>}
+                </div>
                 <small className="bookingUpdateNote" aria-live="polite">Booking status last updated {dateFmt(b.statusUpdatedAt || b.updatedAt)}. This page checks for updates automatically.</small>
               </div>
               <div className="bookingActions">
+                <small className="bookingAmountLabel">Trip total</small>
                 <b>{cash(b.totalAmount)}</b>
                 {paymentConfig.enabled && b.status === "pending_payment" && <button onClick={() => payBooking(b._id)}>Retry payment</button>}
                 {["pending_payment", "pending", "confirmed"].includes(b.status) &&

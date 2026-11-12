@@ -74,8 +74,8 @@ export default function GalleryAndReviews() {
 
   const renderMedia = (items, type) => items.length ? <div className="memoryGrid">{items.map((item) => <article className="memoryCard" key={item._id}>
     <div className="memoryMediaStage" role="group" aria-label={`View ${type} full screen: ${item.title || item.destination || "Trip memory"}`} onClick={() => setSelectedMedia({ item, type })}>
-      <MediaView src={item.mediaData} type={type} alt={item.title || item.destination || "Trip memory"} />
-      <button type="button" className="memoryExpand" aria-label="Open full screen" onClick={(event) => { event.stopPropagation(); setSelectedMedia({ item, type }); }}><Maximize2 /></button>
+      {type === "video" && selectedMedia ? <div className="videoPausedPlaceholder"><Video /><span>Video is open in the viewer</span></div> : <MediaView src={item.mediaData} type={type} alt={item.title || item.destination || "Trip memory"} />}
+      {!(type === "video" && selectedMedia) && <button type="button" className="memoryExpand" aria-label="Open full screen" onClick={(event) => { event.stopPropagation(); setSelectedMedia({ item, type }); }}><Maximize2 /></button>}
     </div>
     <div><small>{item.trip?.destination || item.destination || "Trip memory"}</small><h4>{item.title || item.trip?.title || item.trip?.destination || "A shared journey"}</h4><p>Shared by {item.user?.name || "Traveller"}{item.expiresAt ? ` · visible until ${dateFmt(item.expiresAt)}` : ""}</p></div>
   </article>)}</div> : <p className="communityEmpty">Approved {type === "photo" ? "photos" : "videos"} will appear here.</p>;

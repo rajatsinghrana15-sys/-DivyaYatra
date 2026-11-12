@@ -2012,7 +2012,7 @@
   background: #f5f7f2;
 }
 .familyBookingHero {
-  isolation: isolate;
+  /* isolation: isolate; */
   padding: clamp(28px, 5.4vw, 66px);
   border: 1px solid rgba(255, 255, 255, 0.14);
   background:
@@ -2022,6 +2022,9 @@
       transparent 28%
     ),
     linear-gradient(128deg, #0f332d 0%, #17483d 53%, #2b6250 100%);
+  background-image: url("https://i.pinimg.com/736x/8a/7e/47/8a7e4783c6b0eb374eb21aa778380d8b.jpg");
+  background-size: cover;
+  background-position: center center;
   box-shadow: 0 22px 55px rgba(14, 49, 40, 0.17);
 }
 .familyBookingHero::after {
@@ -3017,6 +3020,286 @@
   }
 }
 
+/* Homepage hero: clear hierarchy, readable photo overlay, and balanced phone layout. */
+.hero {
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  height: min(780px, calc(100svh - 76px));
+  min-height: 600px;
+  background: #102523;
+}
+
+.heroImage {
+  z-index: -1;
+  background-position: center 52%;
+  transform: scale(1.015);
+  animation: heroImageSettle 1.4s ease-out both;
+}
+
+.heroImage::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(0deg, rgba(8, 20, 27, 0.5), transparent 48%),
+    linear-gradient(
+      90deg,
+      rgba(8, 20, 27, 0.76) 0%,
+      rgba(8, 20, 27, 0.54) 46%,
+      rgba(8, 20, 27, 0.08) 100%
+    );
+}
+
+.heroContent {
+  width: min(var(--page-w), 100%);
+  max-width: none;
+  padding: clamp(72px, 8vw, 112px) clamp(20px, 4vw, 58px);
+  margin-inline: auto;
+}
+
+.heroTag {
+  width: fit-content;
+  max-width: 100%;
+  min-height: 36px;
+  padding: 0 13px;
+  gap: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(13, 34, 35, 0.46);
+  color: #edf4cf;
+  font-size: 10px;
+  letter-spacing: 1.7px;
+  backdrop-filter: blur(9px);
+}
+
+.heroTag > span:first-child {
+  flex: 0 0 7px;
+  box-shadow: 0 0 0 4px rgba(217, 236, 138, 0.14);
+}
+
+.heroTag i {
+  width: 28px;
+  background: rgba(255, 255, 255, 0.48);
+}
+
+.hero h1 {
+  max-width: 920px;
+  margin: clamp(22px, 3vw, 34px) 0 18px;
+  font-size: clamp(54px, 7vw, 96px);
+  line-height: 0.99;
+  letter-spacing: clamp(-5px, -0.45vw, -1.5px);
+  text-wrap: balance;
+  animation: heroTextEnter 0.7s 0.08s both;
+}
+
+.hero h1 em {
+  color: #d9ec8a;
+  letter-spacing: inherit;
+}
+
+.heroContent > p {
+  max-width: 510px;
+  margin: 0;
+  color: rgba(247, 250, 244, 0.9);
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.heroCtas {
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.heroCtas .btn {
+  min-height: 52px;
+  padding-inline: 22px;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(7, 17, 17, 0.22);
+}
+
+.heroCall {
+  min-height: 44px;
+  color: #fff;
+  font-size: 13px;
+}
+
+.heroCall svg {
+  width: 17px;
+  height: 17px;
+  color: #d9ec8a;
+}
+
+.heroStats {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: clamp(32px, 5vw, 58px);
+  padding: 14px 18px;
+  gap: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  background: rgba(9, 28, 31, 0.48);
+  backdrop-filter: blur(10px);
+}
+
+.heroStats > div + div {
+  padding-left: 26px;
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.heroStats b {
+  font-size: 15px;
+}
+
+.heroStats small {
+  color: rgba(238, 243, 235, 0.78);
+  font-size: 11px;
+}
+
+.heroStamp {
+  right: clamp(28px, 7vw, 110px);
+  bottom: 105px;
+  border-color: rgba(255, 255, 255, 0.66);
+  background: rgba(8, 28, 29, 0.18);
+  backdrop-filter: blur(5px);
+}
+
+.heroCaption {
+  right: clamp(20px, 5vw, 70px);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes heroImageSettle {
+  from {
+    transform: scale(1.07);
+  }
+  to {
+    transform: scale(1.015);
+  }
+}
+
+@keyframes heroTextEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    height: auto;
+    min-height: min(
+      760px,
+      calc(100svh - 58px - var(--tabbar-h) - var(--sat) - var(--sab))
+    );
+    max-height: none;
+    align-items: flex-end;
+  }
+
+  .heroImage {
+    background-position: 58% center;
+  }
+
+  .heroImage::after {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(8, 20, 27, 0.86) 0%,
+        rgba(8, 20, 27, 0.56) 55%,
+        rgba(8, 20, 27, 0.18) 100%
+      ),
+      linear-gradient(90deg, rgba(8, 20, 27, 0.28), transparent 100%);
+  }
+
+  .heroContent {
+    padding: 76px 20px 28px;
+  }
+
+  .heroTag {
+    min-height: 32px;
+    padding-inline: 10px;
+    font-size: 9px;
+    letter-spacing: 1.35px;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    margin: 20px 0 13px;
+    font-size: clamp(40px, 10.5vw, 62px);
+    line-height: 1.02;
+    letter-spacing: -1.8px;
+  }
+
+  .heroContent > p {
+    max-width: 40ch;
+    font-size: 15px;
+    line-height: 1.58;
+  }
+
+  .heroCtas {
+    margin-top: 21px;
+  }
+
+  .heroCtas .btn {
+    min-height: 49px;
+  }
+
+  .heroStats {
+    width: 100%;
+    margin-top: 26px;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .heroStats > div {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .heroStats > div + div {
+    padding-left: 12px;
+  }
+
+  .heroStats b {
+    font-size: 13px;
+  }
+
+  .heroStats small {
+    font-size: 10px;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 380px) {
+  .heroContent {
+    padding-inline: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(37px, 10vw, 44px);
+  }
+
+  .heroTag i {
+    width: 16px;
+  }
+
+  .heroStats {
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroImage,
+  .hero h1 {
+    animation: none;
+  }
+}
+
 /* Compact admin trip cards: keep both catalogue and departure grids dense on phones. */
 .adminPage .adminTripGrid,
 .adminPage .manifestGrid {
@@ -3200,5 +3483,1013 @@
 
   .adminPage #family .familyRequestTableWrap table {
     min-width: 1540px;
+  }
+}
+
+/* Desktop hero tuning: keep the headline strong without swallowing the landscape. */
+@media (min-width: 761px) {
+  .hero {
+    height: min(740px, calc(100svh - 76px));
+    min-height: 590px;
+  }
+
+  .heroContent {
+    padding-top: clamp(54px, 5vw, 76px);
+    padding-bottom: clamp(48px, 4vw, 64px);
+  }
+
+  .hero h1 {
+    max-width: 1080px;
+    margin-top: 23px;
+    margin-bottom: 13px;
+    font-size: clamp(50px, 4.3vw, 74px);
+    line-height: 1.04;
+    letter-spacing: clamp(-3.5px, -0.28vw, -1.5px);
+  }
+
+  .heroContent > p {
+    max-width: 470px;
+    font-size: clamp(15px, 1.1vw, 17px);
+  }
+
+  .heroCtas {
+    margin-top: 23px;
+  }
+
+  .heroStats {
+    margin-top: clamp(26px, 3vw, 42px);
+    padding: 12px 16px;
+  }
+
+  .heroStamp {
+    right: clamp(34px, 6vw, 90px);
+    bottom: 82px;
+    width: 108px;
+    height: 108px;
+  }
+
+  .heroCaption {
+    bottom: 24px;
+  }
+}
+
+/* Traveller dashboard bookings: separate trip facts, payment and actions clearly. */
+.dashboardPage .bookingList {
+  gap: 16px;
+}
+
+.dashboardPage .bookingList .myBooking {
+  display: grid;
+  grid-template-columns: 205px minmax(0, 1fr) 168px;
+  align-items: stretch;
+  gap: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e3eae2;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(29, 58, 43, 0.06);
+}
+
+.dashboardPage .bookingList .myBooking > img {
+  width: 100%;
+  height: 100%;
+  min-height: 230px;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.dashboardPage .myBookingInfo {
+  min-width: 0;
+  padding: 18px 20px;
+}
+
+.dashboardPage .myBookingHeading {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.dashboardPage .myBookingHeading .status {
+  flex: 0 0 auto;
+  padding: 5px 10px;
+  font-size: 11px;
+}
+
+.dashboardPage .myBookingHeading h3 {
+  min-width: 0;
+  margin: 0;
+  color: #20392f;
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.dashboardPage .myBookingFacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin: 16px 0 12px;
+}
+
+.dashboardPage .myBookingFacts > div {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #edf1eb;
+  border-radius: 11px;
+  background: #f8faf7;
+}
+
+.dashboardPage .myBookingFacts > div > svg {
+  flex: 0 0 15px;
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  color: #64836b;
+}
+
+.dashboardPage .myBookingFacts > div > span {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.dashboardPage .myBookingFacts small {
+  color: #7c897f;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.dashboardPage .myBookingFacts b {
+  color: #33483b;
+  font-size: 12px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.dashboardPage .myBookingExtras {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.dashboardPage .myBookingExtra {
+  display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding: 6px 9px;
+  border: 1px solid #e9eee7;
+  border-radius: 8px;
+  background: #fff;
+  color: #65736a;
+  font-size: 11px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.dashboardPage .myBookingExtra b {
+  color: #42574a;
+}
+
+.dashboardPage .myBookingExtra.paymentState {
+  background: #f4f7f2;
+  text-transform: capitalize;
+}
+
+.dashboardPage .myBookingExtra.paymentState.refund_pending,
+.dashboardPage .myBookingExtra.paymentState.pending {
+  border-color: #f0dfbc;
+  background: #fff8e9;
+  color: #8a672a;
+}
+
+.dashboardPage .myBookingExtra.cancellationInfo {
+  border-color: #f1d9d4;
+  background: #fff7f5;
+}
+
+.dashboardPage .myBookingInfo .pickupMapAction {
+  display: inline-flex;
+  min-height: 31px;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 9px;
+  border-radius: 8px;
+  background: #edf4e9;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.dashboardPage .myBookingInfo .pickupMapAction svg {
+  width: 13px;
+  height: 13px;
+}
+
+.dashboardPage .myBookingInfo .bookingUpdateNote {
+  display: block;
+  margin-top: 12px;
+  color: #8b968e;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.dashboardPage .bookingActions {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 9px;
+  padding: 18px 15px;
+  border-left: 1px solid #e9eee7;
+  background: #fbfcfa;
+}
+
+.dashboardPage .bookingActions .bookingAmountLabel {
+  color: #7a877d;
+  font-size: 10px;
+}
+
+.dashboardPage .bookingActions > b {
+  color: #243e32;
+  font-size: 19px;
+}
+
+.dashboardPage .bookingActions button {
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid #e8d6cf;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+  line-height: 1.3;
+  white-space: normal;
+}
+
+@media (max-width: 900px) {
+  .dashboardPage .bookingList .myBooking {
+    grid-template-columns: 150px minmax(0, 1fr);
+  }
+
+  .dashboardPage .bookingList .myBooking > img {
+    grid-row: 1 / span 2;
+    min-height: 100%;
+  }
+
+  .dashboardPage .bookingActions {
+    grid-column: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    border-top: 1px solid #e9eee7;
+    border-left: 0;
+  }
+
+  .dashboardPage .bookingActions > b {
+    margin-right: auto;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboardPage .bookingList .myBooking {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dashboardPage .bookingList .myBooking > img {
+    grid-row: auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 8;
+  }
+
+  .dashboardPage .myBookingInfo {
+    padding: 15px;
+  }
+
+  .dashboardPage .myBookingFacts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    margin: 12px 0 10px;
+  }
+
+  .dashboardPage .myBookingFacts > div {
+    padding: 8px;
+  }
+
+  .dashboardPage .myBookingFacts > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .dashboardPage .bookingActions {
+    grid-column: auto;
+    padding: 12px 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .dashboardPage .myBookingFacts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dashboardPage .myBookingFacts > div:first-child {
+    grid-column: auto;
+  }
+}
+
+/* Trip requests: readable request summary with distinct quote and admin update panels. */
+.myTripRequestList {
+  display: grid;
+  gap: 14px;
+}
+
+.myTripRequest {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #e3eae2;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(29, 58, 43, 0.055);
+}
+
+.myTripRequestHeader {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.myTripRequestHeader > div {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.myTripRequestHeader h3 {
+  min-width: 0;
+  margin: 0;
+  color: #20392f;
+  font: 800 clamp(17px, 1.7vw, 21px)/1.3 var(--display);
+  overflow-wrap: anywhere;
+}
+
+.myTripRequestType {
+  max-width: 100%;
+  color: #718077;
+  font-size: 12px;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.myTripRequestFacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 15px;
+}
+
+.myTripRequestFacts > div {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 11px;
+  border: 1px solid #edf1eb;
+  border-radius: 11px;
+  background: #f8faf7;
+}
+
+.myTripRequestFacts > div > svg,
+.myTripRequestQuote > svg,
+.myTripRequestAdminUpdate > svg {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  color: #64836b;
+}
+
+.myTripRequestFacts span,
+.myTripRequestQuote span,
+.myTripRequestAdminUpdate span {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.myTripRequestFacts small,
+.myTripRequestQuote small {
+  color: #7c897f;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.myTripRequestFacts b {
+  color: #33483b;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.myTripRequestQuote,
+.myTripRequestAdminUpdate {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 11px;
+  padding: 11px 13px;
+  border: 1px solid #e7eddf;
+  border-radius: 11px;
+  background: #f5f8ef;
+}
+
+.myTripRequestQuote > svg {
+  color: #52775a;
+}
+
+.myTripRequestQuote b {
+  color: #294737;
+  font-size: 17px;
+}
+
+.myTripRequestAdminUpdate {
+  border-color: #e1e8f0;
+  background: #f5f8fc;
+}
+
+.myTripRequestAdminUpdate > svg {
+  color: #56718c;
+}
+
+.myTripRequestAdminUpdate b {
+  color: #31495e;
+  font-size: 11px;
+}
+
+.myTripRequestAdminUpdate small {
+  color: #526579;
+  font-size: 12px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.myTripRequestApproved {
+  margin: 11px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #eff7eb;
+  color: #426244;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.myTripRequestUpdated {
+  display: block;
+  margin-top: 12px;
+  color: #8b968e;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+/* Full-screen gallery viewer: preserve portrait and landscape video proportions. */
+.memoryLightboxContent .proVideo {
+  display: grid;
+  width: fit-content;
+  height: fit-content;
+  max-width: min(calc(100vw - 24px), 1600px);
+  max-height: calc(100dvh - 120px);
+  aspect-ratio: auto;
+  overflow: hidden;
+  background: #080f0d;
+}
+
+.memoryLightboxContent .proVideo video {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(calc(100vw - 24px), 1600px);
+  max-height: calc(100dvh - 120px);
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.memoryLightboxContent .mediaEmbed {
+  width: min(calc(100vw - 24px), calc((100dvh - 120px) * 1.7778), 1500px);
+  max-height: calc(100dvh - 120px);
+  aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 760px) {
+  .myTripRequest {
+    padding: 14px;
+    border-radius: 15px;
+  }
+
+  .myTripRequestFacts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 12px;
+  }
+
+  .myTripRequestFacts > div {
+    padding: 9px;
+  }
+
+  .myTripRequestFacts > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .memoryLightboxContent .proVideo,
+  .memoryLightboxContent .proVideo video {
+    max-width: calc(100vw - 20px);
+    max-height: calc(100dvh - 105px);
+  }
+
+  .memoryLightboxContent .mediaEmbed {
+    width: min(calc(100vw - 20px), calc((100dvh - 105px) * 1.7778));
+    max-height: calc(100dvh - 105px);
+  }
+}
+
+@media (max-width: 380px) {
+  .myTripRequestFacts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .myTripRequestFacts > div:first-child {
+    grid-column: auto;
+  }
+}
+/* Hide inline gallery players while the lightbox is open so iframe audio cannot continue underneath. */
+.videoPausedPlaceholder {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  background: #0b1624;
+  color: #dce6ed;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.videoPausedPlaceholder svg {
+  width: 28px;
+  height: 28px;
+  color: #f3c261;
+}
+
+/* Trip Help refresh: clear support banner, booking summary, maps and refund guidance. */
+.helpPage {
+  background: linear-gradient(180deg, #f5f7fb 0%, #fbfcfe 44%, #f6f8f5 100%);
+}
+
+.helpHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  min-height: 350px;
+  align-content: center;
+  padding: clamp(30px, 5vw, 64px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 26px;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(13, 25, 48, 0.93) 0%,
+      rgba(17, 31, 58, 0.78) 50%,
+      rgba(18, 31, 58, 0.4) 100%
+    ),
+    linear-gradient(0deg, rgba(9, 20, 39, 0.35), transparent 75%),
+    url("https://i.pinimg.com/736x/59/36/8a/59368a88da5258728dcf4f3ec74e3df0.jpg");
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 20px 55px rgba(20, 34, 68, 0.14);
+}
+
+.helpHeroCopy {
+  position: relative;
+  z-index: 1;
+  max-width: 740px;
+}
+
+.helpHero .kicker {
+  color: #f2d995;
+  letter-spacing: 1.8px;
+}
+
+.helpHero h1 {
+  max-width: 680px;
+  margin: 16px 0 14px;
+  font-size: clamp(39px, 5.2vw, 66px);
+  line-height: 1.02;
+  letter-spacing: -2px;
+  text-wrap: balance;
+}
+
+.helpHero h1 em {
+  color: #f1d994;
+}
+
+.helpHeroCopy > p {
+  max-width: 560px;
+  margin: 0;
+  color: rgba(245, 247, 252, 0.86);
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.65;
+}
+
+.helpHero .helpContactButton {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 0 17px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: #f0c96f;
+  color: #1a2742;
+  font-weight: 800;
+  box-shadow: 0 8px 22px rgba(9, 19, 37, 0.2);
+}
+
+.helpHero .helpContactButton svg {
+  width: 17px;
+  height: 17px;
+}
+
+.helpHero .helpContactButton svg:last-child {
+  width: 15px;
+  margin-left: 4px;
+}
+
+.helpHeroBenefits {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: fit-content;
+  max-width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.helpHeroBenefits span {
+  display: flex;
+  min-height: 39px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f6f7fb;
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.helpHeroBenefits svg {
+  flex: 0 0 15px;
+  width: 15px;
+  height: 15px;
+  color: #f1d994;
+}
+
+.helpBookings {
+  padding: clamp(28px, 4vw, 48px) 0 32px;
+}
+
+.helpBookings .sectionIntro {
+  align-items: flex-end;
+  margin-bottom: 18px;
+}
+
+.helpBookings .sectionIntro h2 {
+  margin: 8px 0 5px;
+}
+
+.helpBookings .sectionIntro p {
+  margin: 0;
+  color: #718077;
+  font-size: 12px;
+}
+
+.helpBookings .sectionIntro .textLink {
+  font-weight: 600;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.helpBookingGrid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 14px;
+}
+
+.helpBookingCard {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #e1e7ec;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 9px 28px rgba(34, 48, 79, 0.055);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.helpBookingCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(34, 48, 79, 0.09);
+}
+
+.helpBookingHeader {
+  min-width: 0;
+  padding-bottom: 11px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.helpBookingHeader .status {
+  padding: 5px 9px;
+  font-size: 10px;
+}
+
+.helpBookingHeader h3 {
+  margin: 9px 0 3px;
+  color: #26354e;
+  font-size: 16px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.helpBookingHeader p {
+  margin: 0;
+  color: #728092;
+  font-size: 12px;
+}
+
+.helpBookingDate,
+.helpPickupPanel {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: start;
+  gap: 9px;
+  padding: 11px;
+  border: 1px solid #edf0f3;
+  border-radius: 11px;
+  background: #f8fafc;
+}
+
+.helpBookingDate > svg,
+.helpPickupPanel > svg {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  color: #6279a2;
+}
+
+.helpBookingDate span,
+.helpPickupPanel span {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.helpBookingDate small,
+.helpPickupPanel small {
+  color: #7a8797;
+  font-size: 10px;
+}
+
+.helpBookingDate b,
+.helpPickupPanel b {
+  color: #35445b;
+  font-size: 12px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.helpPickupPanel {
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  background: #f7f9fd;
+}
+
+.helpPickupPanel a {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 9px;
+  border-radius: 8px;
+  background: #e9eef8;
+  color: #344e7e;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.helpPickupPanel a svg {
+  width: 13px;
+  height: 13px;
+}
+
+.helpBookingCard .helpRefundInfo {
+  gap: 6px;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #f0e8d8;
+  border-radius: 11px;
+  background: #fffaf0;
+}
+
+.helpRefundInfo > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.helpRefundInfo > div svg {
+  width: 15px;
+  height: 15px;
+  color: #9a7436;
+}
+
+.helpRefundInfo b {
+  color: #574a31;
+  font-size: 11px;
+}
+
+.helpRefundInfo p {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0;
+  color: #786846;
+  font-size: 11px;
+}
+
+.helpRefundInfo p strong {
+  color: #4e412b;
+}
+
+.helpBookingCard .helpRefundInfo small {
+  color: #81765f;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.helpBookingCard .helpRefundStatus {
+  padding: 9px 11px;
+  border-radius: 9px;
+  background: #fff5df;
+  color: #87682f;
+}
+
+.helpBookingCard .helpCancelButton {
+  min-height: 39px;
+  margin: 0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.helpTopics {
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.helpTopics article {
+  padding: 19px;
+  border-color: #e5eaf0;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(34, 48, 79, 0.04);
+}
+
+.helpTopics article > span {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #edf1fa;
+  color: #4c6390;
+}
+
+.helpTopics h2 {
+  margin: 13px 0 8px;
+  color: #26354e;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.helpTopics p {
+  color: #697789;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.helpTopics .textLink {
+  border: none;
+  background-color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #405a8b;
+  font-weight: 800;
+}
+
+.helpSignIn {
+  margin-top: 16px;
+  border: 1px solid #e4e9ef;
+  box-shadow: 0 8px 24px rgba(34, 48, 79, 0.04);
+}
+
+@media (max-width: 760px) {
+  .helpHero {
+    min-height: 0;
+    gap: 18px;
+    padding: 26px 20px;
+    border-radius: 19px;
+    background-image:
+      linear-gradient(180deg, rgba(13, 25, 48, 0.82), rgba(13, 25, 48, 0.94)),
+      url("https://i.pinimg.com/736x/59/36/8a/59368a88da5258728dcf4f3ec74e3df0.jpg");
+  }
+
+  .helpHero h1 {
+    font-size: clamp(38px, 9vw, 50px);
+    letter-spacing: -1.5px;
+  }
+
+  .helpHeroBenefits {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .helpHeroBenefits span {
+    min-height: 35px;
+  }
+
+  .helpBookings .sectionIntro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .helpBookingGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .helpBookingCard {
+    padding: 13px;
+  }
+
+  .helpPickupPanel {
+    grid-template-columns: 18px minmax(0, 1fr);
+  }
+
+  .helpPickupPanel a {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .helpTopics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .helpSignIn {
+    align-items: stretch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .helpBookingCard {
+    transition: none;
   }
 }

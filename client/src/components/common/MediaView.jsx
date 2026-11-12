@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ExternalLink, ImageOff, Play } from "lucide-react";
 import { parseMedia } from "../../services/media";
 
@@ -8,9 +8,23 @@ function ProVideo({ src, onError }) {
   const [playing, setPlaying] = useState(false);
   const [dur, setDur] = useState("");
   const toggle = () => { const v = ref.current; if (!v) return; v.paused ? v.play() : v.pause(); };
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return undefined;
+    return () => {
+      video.pause();
+    };
+  }, [src]);
+  const pauseOtherVideos = (event) => {
+    const activeVideo = event.currentTarget;
+    document.querySelectorAll("video").forEach((video) => {
+      if (video !== activeVideo && !video.paused) video.pause();
+    });
+    setPlaying(true);
+  };
   return <div className={`proVideo${playing ? " playing" : ""}`}>
     <video ref={ref} src={src.startsWith("data:") ? src : `${src}#t=0.4`} preload="metadata" playsInline controls={playing} controlsList="nodownload noplaybackrate" disablePictureInPicture onError={onError}
-      onLoadedMetadata={(e) => setDur(fmtTime(e.currentTarget.duration))} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} />
+      onLoadedMetadata={(e) => setDur(fmtTime(e.currentTarget.duration))} onPlay={pauseOtherVideos} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} />
     {!playing && <button type="button" className="proPlay" onClick={toggle} aria-label="Play video"><span><Play fill="currentColor" /></span></button>}
     {!playing && dur && <i className="proDur">{dur}</i>}
   </div>;

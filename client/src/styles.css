@@ -3094,7 +3094,12 @@ td button:last-child {
     #43568e 32%,
     #202e59 100%
   );
+  background-image: url("https://i.pinimg.com/736x/59/36/8a/59368a88da5258728dcf4f3ec74e3df0.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   color: #fff;
+  margin-bottom: 20px;
 }
 .familyBookingHero:after,
 .helpHero:after {
@@ -3518,6 +3523,7 @@ td button:last-child {
   }
   .familyBookingHero,
   .helpHero {
+    margin-bottom: 0;
     padding: 28px 20px;
     border-radius: 18px;
   }
