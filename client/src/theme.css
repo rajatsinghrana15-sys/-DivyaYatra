@@ -1,0 +1,122 @@
+/* Himalayan indigo + marigold theme. Loaded after styles.css so it overrides tokens and key components. */
+:root{
+  --forest:#17284b; --deep:#0e1a33; --ink:#121c2e; --muted:#5f6b7e; --line:#dde3ec;
+  --paper:#f4f6f9; --sage:#e6ecf5; --lime:#f2a22c; --marigold:#f2a22c; --accent-ink:#9a5700;
+  --display:"Bricolage Grotesque","Hind",system-ui,sans-serif;
+  --shadow:0 1px 2px rgba(20,38,74,.06),0 14px 30px -14px rgba(20,38,74,.22);
+}
+html{scroll-padding-top:92px}
+body{font-family:"Hind",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+::selection{background:var(--marigold);color:#1b1305}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:2px}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:0;border-color:var(--forest)}
+
+/* Buttons */
+.btn{border-radius:10px;font-size:14px;letter-spacing:.1px}
+.btn-lime{background:var(--marigold);color:#1b1305}
+.btn-lime:hover{background:#ffb74a}
+.btn-dark:hover{background:#25407a}
+.btn-outline:hover{border-color:var(--forest)}
+.avatar{background:var(--marigold);color:#1b1305}
+.trustStrip>div>svg{color:var(--forest)}
+
+/* Header */
+.topbar{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom-color:var(--line)}
+.navlinks button,.navlinks a,.signIn{font-size:14px;color:#3d4a60}
+
+/* Hero */
+.heroImage{opacity:1;box-shadow:inset 0 -180px 150px -70px rgba(14,26,51,.75)}
+.hero h1{letter-spacing:-2.5px;line-height:1.02}
+.hero h1 em{font-family:inherit;font-style:normal;font-weight:800;letter-spacing:inherit;color:#fff;
+  background:linear-gradient(transparent 68%,rgba(242,162,44,.9) 68% 90%,transparent 90%);padding:0 .08em}
+.heroTag,.heroContent .kicker{color:#f7c776}
+.heroContent>p{font-size:18px;max-width:480px}
+.heroStamp{color:var(--marigold);border-color:rgba(255,255,255,.5)}
+.heroCaption{display:none}
+
+/* Section headings: sentence case, no fake numbering, readable accents on light backgrounds */
+.kicker{display:block;text-transform:lowercase;letter-spacing:.4px;font-size:13px;font-weight:700;color:#5e6b86}
+.kicker::first-letter{text-transform:uppercase}
+.kicker i,.aboutFacts span{display:none}
+#root :is(.sectionIntro,.aboutCopy,.dashHeading,.modal,.upcomingHeading,.catalogueHeading) h2 em,
+#root :is(.dashHeading,.modal) em{font-family:inherit;font-style:normal;color:var(--accent-ink);letter-spacing:inherit}
+#root :is(.sectionIntro,.aboutCopy,.upcomingHeading,.catalogueHeading) h2{letter-spacing:-1.2px;line-height:1.08}
+.authArt em,.detailHeroContent em{font-family:inherit;font-style:normal;color:var(--marigold)}
+
+/* Cards */
+.tripCard,.upcomingCard,.adminTripCard,.manifestCard,.myBooking,.bookingBox{border-radius:14px;box-shadow:var(--shadow);border-color:var(--line)}
+.tripCard{transition:transform .22s,box-shadow .22s}
+.tripCard:hover{transform:translateY(-3px)}
+.categoryPill{background:var(--deep);color:#fff;border-radius:999px}
+.roundArrow{background:var(--forest);color:#fff}
+.roundArrow:hover{background:var(--marigold);color:#1b1305}
+.upcomingPhoto>span{background:var(--marigold);color:#1b1305}
+.seatAvailabilityBadge{background:#e4f3ea;color:#16603a}
+.seatAvailabilityBadge.soldOut,.upcomingSeats.soldOut{background:#fbe7e4;color:#a1281d}
+.modal{border-radius:20px}
+.quoteBand{background:var(--deep);color:#fff}
+.quoteBand span{color:var(--marigold)}
+.footer{background:var(--deep)}
+
+/* Form fields */
+input,select,textarea{border-radius:10px}
+.toast{background:var(--deep);color:#fff;border-radius:12px}
+
+@media (max-width:760px){
+  .hero h1{letter-spacing:-1.5px}
+  .heroStats{gap:28px;margin-top:40px}
+  .heroStamp{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+/* ---------- Profile photo ---------- */
+.avatar{overflow:hidden;padding:0;display:grid;place-items:center;border:2px solid #fff;box-shadow:0 0 0 2px var(--marigold)}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.accountMenu{border-radius:18px;border-color:var(--line);box-shadow:0 22px 60px -18px rgba(14,26,51,.35)}
+.accountMenuUser{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center}
+.accountMenuUser>div{min-width:0}
+.avatarLarge{grid-row:span 3;position:relative;width:60px;height:60px;border-radius:50%;overflow:hidden;background:var(--marigold);color:#1b1305;display:grid;place-items:center;font:800 24px var(--display);border:0;padding:0}
+.avatarLarge img{width:100%;height:100%;object-fit:cover}
+.avatarLarge.uploading::after{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;background:rgba(14,26,51,.45);animation:spin .8s linear infinite}
+.accountMenu>button.accountPhotoBtn{display:flex;align-items:center;gap:9px;font-weight:600}
+.accountPhotoBtn svg{width:16px;height:16px}
+.visuallyHiddenFile{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.travellerAdminAvatar{overflow:hidden}
+.travellerAdminAvatar img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+
+/* ---------- Startup loader ---------- */
+
+/* ---------- Action loader (login, booking, saving...) ---------- */
+
+/* ---------- Layout polish ---------- */
+.section{padding-top:84px;padding-bottom:84px}
+.detailHero{border-radius:20px;overflow:hidden}
+.bookingBox{position:sticky;top:100px}
+.footer{border-top:4px solid var(--marigold)}
+.tripImage img,.upcomingPhoto img{transition:transform .5s ease}
+.tripCard:hover .tripImage img{transform:scale(1.04)}
+.emptyState svg{color:var(--marigold)}
+.seat.free:hover{border-color:var(--marigold)}
+.seat.chosen{background:var(--forest);color:#fff;border-color:var(--forest)}
+
+/* ---- Private family trips and fleet ---- */
+.familyRequest{max-width:var(--page-w);margin:0 auto;padding:2.5rem 1.2rem}.familyRequest h2{margin:.2rem 0 .4rem}
+.frCard{background:#fff;border:1px solid var(--line,#ddd);border-radius:16px;padding:1.4rem;margin-top:1rem}
+.frGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.9rem}
+.frGrid label,.fleetBar label,.fleetCard label{display:grid;gap:.3rem;font-weight:600;font-size:.92rem}
+.frGrid input,.frGrid textarea,.frGrid select,.fleetBar input,.fleetCard select{padding:.6rem .8rem;border:1px solid var(--line,#ccc);border-radius:10px;font:inherit;background:#fff}
+.frGrid .span{grid-column:1/-1}
+.vehGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.8rem;margin:1rem 0}
+.vehCard{position:relative;display:grid;gap:.25rem;padding:.9rem;border:2px solid var(--line,#ddd);border-radius:14px;cursor:pointer;background:#fff;align-content:start}
+.vehCard input{position:absolute;opacity:0;pointer-events:none}.vehCard.on{border-color:var(--forest,#1f4d3a);box-shadow:0 0 0 3px rgba(31,77,58,.15)}
+.vehCard.off{opacity:.55;cursor:not-allowed}.vehCard:focus-within{outline:3px solid var(--marigold,#f2a93b)}
+.vehCard img{width:100%;height:100px;object-fit:cover;border-radius:10px}.vehCard small{color:var(--muted,#667)}
+.vehTag{justify-self:start;display:inline-block;font-size:.78rem;font-weight:700;padding:.1rem .6rem;border-radius:99px;background:#f9dcd8;color:#a3281d}.vehTag.ok{background:#d9f2e6;color:#0d5a37}
+.myReqs{display:grid;gap:.8rem;margin-top:1.5rem}.myReq{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1rem;border:1px solid var(--line,#ddd);border-radius:14px;background:#fff}
+.chipRow{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}.miniChip{padding:.15rem .65rem;border-radius:99px;background:#e6f0ec;color:#14503f;font-size:.8rem;font-weight:600}.warnTxt{color:#a3281d;font-weight:600}
+.fleetBar{display:flex;gap:.8rem;flex-wrap:wrap;align-items:end;margin:.6rem 0 1rem}
+.fleetGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.fleetCard{border:1px solid var(--line,#ddd);border-radius:14px;padding:1rem;background:#fff;display:grid;gap:.4rem;align-content:start}.fleetCard ul{margin:.2rem 0;padding-left:1.1rem;font-size:.88rem}
+.adminTableWrap td select,.adminTableWrap td input{max-width:180px;margin-bottom:.3rem}

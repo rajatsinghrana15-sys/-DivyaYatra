@@ -1,0 +1,3204 @@
+/* Dashboard, share-journey and media polish. Loaded last. */
+.dashStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 0 0 18px;
+}
+.dashStats > div {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  display: grid;
+  gap: 2px;
+  box-shadow: var(--shadow);
+}
+.dashStats svg {
+  width: 22px;
+  height: 22px;
+  color: var(--forest);
+  background: var(--sage);
+  padding: 6px;
+  box-sizing: content-box;
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
+.dashStats span {
+  font-size: 13px;
+  color: var(--muted);
+}
+.dashStats b {
+  font-family: var(--display);
+  font-size: clamp(20px, 3vw, 28px);
+  color: var(--deep);
+}
+.dashTabs {
+  display: flex;
+  gap: 6px;
+  background: var(--sage);
+  padding: 5px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  width: fit-content;
+  max-width: 100%;
+}
+.dashTabs button,
+.seg button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  background: transparent;
+  padding: 11px 18px;
+  border-radius: 10px;
+  font: 600 14px/1 inherit;
+  color: #3d4a60;
+  cursor: pointer;
+  min-height: 44px;
+}
+.dashTabs button.on,
+.seg button.on {
+  background: #fff;
+  color: var(--deep);
+  box-shadow: var(--shadow);
+}
+.dashTabs svg,
+.seg svg {
+  width: 17px;
+  height: 17px;
+}
+.shareCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: clamp(18px, 3vw, 32px);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 20px;
+}
+.shareClosed {
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+.shareClosed > svg {
+  width: 44px;
+  height: 44px;
+  color: var(--forest);
+  background: var(--sage);
+  padding: 12px;
+  border-radius: 14px;
+}
+.shareHead h3,
+.shareClosed h3 {
+  font-family: var(--display);
+  font-size: clamp(22px, 3vw, 30px);
+  margin: 4px 0;
+}
+.shareHead p,
+.shareClosed p,
+.shareHint {
+  color: var(--muted);
+  font-size: 14px;
+}
+.shareSteps {
+  display: grid;
+  gap: 14px;
+}
+.shareSteps > section {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+}
+.stepNo {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+}
+.stepBody {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+.stepBody h4 {
+  margin: 5px 0 0;
+  font-size: 17px;
+}
+.stepBody label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3d4a60;
+}
+.stepBody input,
+.stepBody select {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0 14px;
+  background: #fff;
+  font-size: 16px;
+}
+.seg {
+  display: flex;
+  gap: 4px;
+  background: var(--sage);
+  padding: 4px;
+  border-radius: 12px;
+}
+.seg button {
+  flex: 1;
+  padding: 10px;
+}
+.filePick input {
+  padding: 11px 14px;
+}
+.sharePreview {
+  display: grid;
+  gap: 8px;
+}
+.sharePreview small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #18794e;
+  font-weight: 700;
+}
+.sharePreview small svg {
+  width: 15px;
+}
+.sharePreview img,
+.sharePreview video {
+  width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #0e1a33;
+}
+.payRow {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.payRow > div:last-child {
+  display: grid;
+  gap: 8px;
+  flex: 1;
+  min-width: 180px;
+}
+.shareSubmit {
+  min-height: 52px;
+  width: 100%;
+  font-size: 16px;
+}
+.mediaEmbed {
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0e1a33;
+}
+.mediaEmbed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #fff;
+}
+.mediaFallback {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  min-height: 160px;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--sage);
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
+}
+.mediaFallback svg {
+  width: 26px;
+}
+.mediaFallback a {
+  color: var(--forest);
+  font-weight: 700;
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.mediaFallback a svg {
+  width: 14px;
+}
+.memoryCard .mediaEmbed {
+  max-width: none;
+}
+.memoryCta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  background: var(--deep);
+  color: #fff;
+  border-radius: 22px;
+  padding: clamp(20px, 3vw, 30px);
+  margin-top: 24px;
+}
+.memoryCta h3 {
+  font-family: var(--display);
+  font-size: clamp(20px, 3vw, 28px);
+  margin: 4px 0;
+  color: #fff;
+}
+.memoryCta p {
+  color: #c7d0e2;
+  max-width: 560px;
+  font-size: 14px;
+}
+.memoryCta .kicker {
+  color: #f7c776;
+}
+.memoryCta .btn-dark {
+  background: var(--marigold);
+  color: #1b1305;
+}
+.galleryPreviewDialog .mediaEmbed {
+  max-width: min(480px, 86vw);
+}
+.galleryPreviewDialog {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+.myBooking {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .dashStats {
+    gap: 8px;
+  }
+  .dashStats > div {
+    padding: 12px;
+  }
+  .dashStats svg {
+    width: 18px;
+    height: 18px;
+  }
+  .dashTabs {
+    width: 100%;
+  }
+  .dashTabs button {
+    flex: 1;
+    padding: 11px 8px;
+  }
+  .shareSteps > section {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+  .stepNo {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+  .shareClosed {
+    grid-template-columns: 1fr;
+  }
+  .dashHeading {
+    gap: 12px;
+  }
+  .dashHeading .btn {
+    width: 100%;
+  }
+  .memoryCta .btn {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Admin dashboard: persistent grouped sidebar, calmer spacing ===== */
+.adminProfileForm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 860px;
+  padding: 22px;
+  background: #fbfcfa;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+.adminProfileForm label {
+  display: grid;
+  gap: 7px;
+  color: #33443c;
+  font-size: 13px;
+  font-weight: 700;
+}
+.adminProfileForm label small {
+  display: inline;
+  color: #7b887f;
+  font-weight: 500;
+}
+.adminProfileForm input {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+  border: 1px solid #d8e0d8;
+  border-radius: 11px;
+  background: #fff;
+  color: #1c2b24;
+  font: inherit;
+}
+.adminProfileForm input:focus {
+  outline: 3px solid #dcebe2;
+  border-color: #688a72;
+}
+.adminProfileActions {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+@media (max-width: 620px) {
+  .adminProfileForm {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+  .adminProfileActions {
+    grid-column: auto;
+  }
+  .adminProfileActions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.adminPage .adminDashboardWorkspace {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.adminNav {
+  position: sticky;
+  top: 94px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 16px 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  max-height: calc(100vh - 112px);
+  overflow-y: auto;
+}
+.adminNavGroup {
+  display: grid;
+  gap: 4px;
+}
+.adminNavGroup > b {
+  padding: 0 12px 4px;
+  font-size: 11px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: #8793a8;
+}
+.adminNavGroup > div {
+  display: grid;
+  gap: 2px;
+}
+.adminNav button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #3d4a60;
+  font: 600 14px/1 inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.adminNav button svg {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+  opacity: 0.75;
+}
+.adminNav button:hover {
+  background: var(--paper);
+  color: var(--deep);
+}
+.adminNav button.active {
+  background: var(--forest);
+  color: #fff;
+  box-shadow: 0 6px 14px -6px rgba(23, 40, 75, 0.55);
+}
+.adminNav button.active svg {
+  opacity: 1;
+  color: var(--marigold);
+}
+.navBadge {
+  margin-left: auto;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: 11px;
+  background: var(--marigold);
+  color: #1b1305;
+  font: 800 12px/22px inherit;
+  text-align: center;
+  font-style: normal;
+}
+.adminNavSite {
+  margin-top: 2px;
+  border-top: 1px solid var(--line) !important;
+  border-radius: 0 0 12px 12px !important;
+  padding-top: 6px !important;
+  color: var(--muted) !important;
+}
+.adminPage .adminPanel {
+  padding: clamp(18px, 2.4vw, 30px);
+  border-radius: 20px;
+}
+.adminPage .adminSectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.adminPage .adminSectionHead h2 {
+  margin: 0 0 4px;
+}
+.adminPage .adminSectionHead p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.adminToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.adminSearch {
+  position: relative;
+  flex: 1 1 260px;
+  display: block;
+}
+.adminSearch svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  color: var(--muted);
+}
+.adminSearch input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px 0 42px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 15px;
+}
+.adminChips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.adminChips button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+  font: 600 13px/1 inherit;
+  color: #3d4a60;
+  cursor: pointer;
+}
+.adminChips button.on {
+  background: var(--deep);
+  border-color: var(--deep);
+  color: #fff;
+}
+.adminPage .adminTableWrap {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  max-height: 70vh;
+  overflow: auto;
+}
+.adminPage .adminTableWrap table {
+  min-width: 980px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.adminPage .adminTableWrap th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--paper);
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #6a768b;
+  padding: 13px 14px;
+  text-align: left;
+}
+.adminPage .adminTableWrap td {
+  padding: 16px 14px;
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.adminPage .adminTableWrap tbody tr:hover td {
+  background: #fafbfd;
+}
+.adminPage .adminTableWrap .cellSub {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+.adminPage .adminTableWrap select {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 10px;
+  background: #fff;
+  font-size: 14px;
+}
+.adminEmptyCell {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px !important;
+}
+.adminAlert {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin: 0 0 18px;
+  padding: 16px 18px;
+  border: 1px solid #f2c97c;
+  border-radius: 16px;
+  background: #fff7e6;
+  text-align: left;
+  cursor: pointer;
+}
+.adminAlert > svg {
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--marigold);
+  color: #1b1305;
+  box-sizing: border-box;
+}
+.adminAlert div {
+  flex: 1;
+}
+.adminAlert b,
+.adminAlert small {
+  display: block;
+}
+.adminAlert small {
+  color: #7a5a1c;
+}
+.adminAlert > span {
+  padding: 9px 16px;
+  border-radius: 10px;
+  background: var(--deep);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+}
+.adminPage .adminStats {
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.adminPage .adminTripGrid,
+.adminPage .manifestGrid,
+.adminPage .categoryAdminGrid,
+.adminPage .travellerAdminGrid {
+  gap: 18px;
+}
+
+@media (max-width: 1023px) {
+  .adminPage .adminDashboardWorkspace {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .adminNav {
+    position: sticky;
+    top: calc(58px + var(--sat, 0px));
+    z-index: 15;
+    flex-direction: row;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 14px;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    margin: 0 -2px;
+  }
+  .adminNav::-webkit-scrollbar {
+    display: none;
+  }
+  .adminNavGroup,
+  .adminNavGroup > div {
+    display: contents;
+  }
+  .adminNavGroup > b {
+    display: none;
+  }
+  .adminNav button {
+    width: auto;
+    flex: 0 0 auto;
+    gap: 8px;
+    padding: 0 14px;
+    white-space: nowrap;
+  }
+  .adminNavSite {
+    display: none !important;
+  }
+}
+@media (max-width: 700px) {
+  .adminToolbar {
+    gap: 10px;
+  }
+  .adminChips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 -14px;
+    padding: 0 14px;
+    scrollbar-width: none;
+    width: calc(100% + 28px);
+  }
+  .adminChips button {
+    flex: 0 0 auto;
+  }
+  .adminAlert {
+    flex-wrap: wrap;
+  }
+  .adminAlert > span {
+    width: 100%;
+    text-align: center;
+  }
+  .adminPage .adminSectionHead {
+    flex-direction: column;
+  }
+  .adminPage .adminSectionHead .btn {
+    width: 100%;
+  }
+  .adminPage .adminStats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
+
+/* ===== Action menus ===== */
+.actionMenu {
+  position: relative;
+  display: inline-block;
+}
+.actionKebab {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: #3d4a60;
+  cursor: pointer;
+}
+.actionKebab:hover {
+  background: var(--paper);
+}
+.actionKebab svg {
+  width: 18px;
+}
+.actionTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  font: 700 14px/1 inherit;
+  cursor: pointer;
+}
+.actionTrigger.primary {
+  background: var(--marigold);
+  border-color: var(--marigold);
+  color: #1b1305;
+}
+.actionTrigger svg {
+  width: 17px;
+}
+.actionList {
+  position: absolute;
+  top: calc(100% + 6px);
+  z-index: 40;
+  min-width: 210px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px -12px rgba(14, 26, 51, 0.35);
+  display: grid;
+  gap: 2px;
+}
+.actionList.right {
+  right: 0;
+}
+.actionList.left {
+  left: 0;
+}
+.actionItem {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #27334a;
+  font: 600 14px/1 inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+}
+.actionItem svg {
+  width: 17px;
+  color: #6a768b;
+}
+.actionItem:hover {
+  background: var(--paper);
+}
+.actionItem.danger,
+.actionItem.danger svg {
+  color: #b3321f;
+}
+.actionItem.danger:hover {
+  background: #fdecea;
+}
+.adminHeadActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.adminTripActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.adminTripActions .btn svg {
+  width: 15px;
+}
+.categoryAdminGrid > div {
+  position: relative;
+}
+.categoryAdminGrid .actionMenu {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+.travellerAdminGrid article {
+  position: relative;
+}
+.travellerAdminGrid .actionMenu {
+  margin-left: auto;
+}
+.fleetCard .chipRow {
+  align-items: center;
+}
+.adminTableWrap td:last-child {
+  width: 56px;
+}
+
+/* ===== Workers ===== */
+.staffGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.staffCard {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  display: grid;
+  gap: 12px;
+  box-shadow: var(--shadow);
+}
+.staffCard.off {
+  opacity: 0.65;
+}
+.staffTop {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.staffTop > div:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+.staffTop b,
+.staffTop small {
+  display: block;
+}
+.staffTop small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.staffTop small svg {
+  width: 13px;
+}
+.permChips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.permChips i {
+  font-style: normal;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: var(--sage);
+  color: var(--forest);
+  font-size: 12px;
+  font-weight: 700;
+}
+.permBox {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+}
+.permBox legend {
+  font-weight: 700;
+  padding: 0 6px;
+}
+.permBox > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 8px;
+}
+.permBox label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  background: #fff;
+}
+.permBox label.on {
+  border-color: var(--forest);
+  background: var(--sage);
+}
+.permBox input {
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+}
+
+/* ===== Location button ===== */
+.locateWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+  align-items: flex-start;
+}
+.locateBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px dashed var(--forest);
+  border-radius: 20px;
+  background: var(--sage);
+  color: var(--forest);
+  font: 700 13px/1 inherit;
+  cursor: pointer;
+}
+.locateBtn:disabled {
+  opacity: 0.7;
+}
+.locateBtn svg {
+  width: 16px;
+}
+.locateMsg {
+  color: #b3321f;
+  font-weight: 500;
+  font-size: 12.5px;
+}
+.spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== My memories ===== */
+.myMemories {
+  margin-top: 28px;
+}
+.myMemHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+}
+.myMemHead h3 {
+  font-family: var(--display);
+  font-size: 22px;
+  margin: 0;
+}
+.myMemGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+.myMemCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: grid;
+  align-content: start;
+}
+.myMemCard > img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.myMemBody {
+  padding: 14px;
+  display: grid;
+  gap: 6px;
+}
+.myMemBody small {
+  color: var(--muted);
+}
+.memStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font: 700 12px/1.4 inherit;
+  background: #fff4dc;
+  color: #8a5a00;
+}
+.memStatus svg {
+  width: 13px;
+}
+.memStatus.approved {
+  background: #e3f6ec;
+  color: #17744a;
+}
+.memStatus.rejected {
+  background: #fdecea;
+  color: #b3321f;
+}
+.memRemove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  margin-top: 6px;
+  border: 1px solid #f0c2bb;
+  border-radius: 12px;
+  background: #fff;
+  color: #b3321f;
+  font: 700 14px/1 inherit;
+  cursor: pointer;
+}
+.memRemove:hover {
+  background: #fdecea;
+}
+.memRemove svg {
+  width: 16px;
+}
+
+/* ===== Professional video ===== */
+.proVideo {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0a1226;
+  aspect-ratio: 16/9;
+  box-shadow: 0 14px 34px -14px rgba(10, 18, 38, 0.7);
+}
+.proVideo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0a1226;
+}
+.proVideo.playing video {
+  object-fit: contain;
+}
+.proVideo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 18, 38, 0.1) 35%,
+    rgba(10, 18, 38, 0.7)
+  );
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.proVideo.playing::after {
+  opacity: 0;
+}
+.proPlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.proPlay span {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  color: #fff;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+.proPlay span svg {
+  width: 26px;
+  height: 26px;
+  margin-left: 4px;
+}
+.proPlay:hover span {
+  transform: scale(1.08);
+  background: var(--marigold);
+  color: #1b1305;
+  border-color: var(--marigold);
+}
+.proDur {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  padding: 4px 9px;
+  border-radius: 8px;
+  background: rgba(10, 18, 38, 0.75);
+  color: #fff;
+  font: 700 12px/1.4 inherit;
+  font-style: normal;
+}
+.mediaEmbed {
+  position: relative;
+  box-shadow: 0 14px 34px -14px rgba(10, 18, 38, 0.7);
+}
+.embedBadge {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 2;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(10, 18, 38, 0.8);
+  color: #fff;
+  font: 700 11px/1.4 inherit;
+  font-style: normal;
+  pointer-events: none;
+}
+.memoryTypeSection:has(.proVideo),
+.memoryTypeSection:has(.mediaEmbed) {
+  background: linear-gradient(160deg, #0e1a33, #17284b);
+  border-radius: 24px;
+  padding: clamp(18px, 3vw, 32px);
+}
+.memoryTypeSection:has(.proVideo) h3,
+.memoryTypeSection:has(.mediaEmbed) h3 {
+  color: #fff;
+}
+.memoryTypeSection:has(.proVideo) .memoryTypeHeading small,
+.memoryTypeSection:has(.mediaEmbed) .memoryTypeHeading small {
+  color: #aeb9d0;
+}
+.memoryTypeSection:has(.proVideo) .memoryCard,
+.memoryTypeSection:has(.mediaEmbed) .memoryCard {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-radius: 18px;
+  padding: 10px;
+  overflow: visible;
+}
+.memoryTypeSection:has(.proVideo) .memoryCard small,
+.memoryTypeSection:has(.proVideo) .memoryCard p {
+  color: #aeb9d0;
+}
+.memoryTypeSection:has(.proVideo) .memoryCard h4 {
+  color: #fff;
+}
+.memoryTypeSection:has(.proVideo) .memoryGrid {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.memoryTypeSection:has(.proVideo) .memoryCard:first-child {
+  grid-column: 1/-1;
+}
+@media (min-width: 900px) {
+  .memoryTypeSection:has(.proVideo) .memoryCard:first-child:not(:only-child) {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+}
+@media (max-width: 700px) {
+  .proPlay span {
+    width: 58px;
+    height: 58px;
+  }
+  .adminHeadActions {
+    width: 100%;
+  }
+  .adminHeadActions > * {
+    flex: 1;
+  }
+  .adminHeadActions .actionTrigger,
+  .adminHeadActions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  /* Keep only the dashboard Create menu anchored inside the mobile viewport. */
+  .adminHeadActions .adminCreateMenu {
+    position: relative;
+    flex: 0 0 auto;
+  }
+  .adminHeadActions .adminCreateMenu .actionTrigger {
+    width: auto;
+  }
+  .adminHeadActions .adminCreateMenu .actionList {
+    left: 0;
+    right: auto;
+    width: min(240px, calc(100vw - 32px));
+    min-width: 0;
+    max-width: calc(100vw - 32px);
+  }
+  .actionList {
+    min-width: min(240px, 82vw);
+  }
+  .locateBtn {
+    min-height: 44px;
+  }
+}
+
+/* ===== Location permission popup ===== */
+.locOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(10, 18, 38, 0.6);
+  backdrop-filter: blur(4px);
+}
+.locModal {
+  position: relative;
+  width: min(440px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 24px;
+  padding: 28px 24px 22px;
+  box-shadow: 0 30px 70px -20px rgba(10, 18, 38, 0.6);
+  text-align: center;
+  animation: locIn 0.22s ease-out;
+}
+@keyframes locIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.locClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.locClose svg {
+  width: 18px;
+}
+.locIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: var(--forest);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 14px;
+}
+.locIcon svg {
+  width: 28px;
+}
+.locModal h3 {
+  font-family: var(--display);
+  font-size: 24px;
+  margin: 0 0 8px;
+}
+.locModal p {
+  color: #3d4a60;
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0 0 12px;
+}
+.locNote {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px !important;
+  color: #17744a !important;
+}
+.locNote svg {
+  width: 16px;
+}
+.locSteps {
+  text-align: left;
+  padding-left: 20px;
+  margin: 0 0 16px;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: #3d4a60;
+}
+.locActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+.locActions .btn {
+  flex: 1;
+  min-height: 48px;
+}
+@media (max-width: 520px) {
+  .locOverlay {
+    align-items: end;
+    padding: 0;
+  }
+  .locModal {
+    border-radius: 24px 24px 0 0;
+    padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ===== Family requests in dashboard ===== */
+.famReqSection {
+  margin-bottom: 34px;
+}
+.famReqGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 16px;
+}
+.famReqCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+  box-shadow: var(--shadow);
+  align-content: start;
+}
+.famReqTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+}
+.famReqTop b {
+  font-size: 18px;
+  display: block;
+}
+.famReqTop small,
+.famReqMeta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.famReqTop svg,
+.famReqMeta svg {
+  width: 14px;
+}
+.famReqMeta {
+  display: grid;
+  gap: 6px;
+}
+.famReqQuote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--paper);
+}
+.famReqQuote b {
+  font-family: var(--display);
+  font-size: 20px;
+  color: var(--deep);
+}
+.famReqNote {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #fff7e6;
+  font-size: 13.5px;
+  color: #6b4d12;
+}
+.memStatus.ok {
+  background: #e3f6ec;
+  color: #17744a;
+}
+.memStatus.wait {
+  background: #fff4dc;
+  color: #8a5a00;
+}
+.memStatus.bad {
+  background: #fdecea;
+  color: #b3321f;
+}
+.famReqSection .myMemHead {
+  align-items: center;
+}
+.familyReqHint {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.linkBtn {
+  border: 0;
+  background: none;
+  color: var(--forest);
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+}
+.dashTabs {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.dashTabs button {
+  white-space: nowrap;
+}
+
+/* Refined site navigation shared by desktop, tablet and phone layouts. */
+.siteTopbar {
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid rgba(18, 60, 52, 0.09);
+  box-shadow: 0 8px 28px rgba(17, 43, 35, 0.045);
+  backdrop-filter: saturate(1.4) blur(16px);
+  -webkit-backdrop-filter: saturate(1.4) blur(16px);
+}
+.siteTopbar .navwrap {
+  gap: clamp(14px, 2vw, 30px);
+}
+.siteTopbar .brand {
+  flex: 0 1 auto;
+  min-width: 0;
+  gap: 12px;
+  padding: 4px 8px 4px 0;
+  border-radius: 14px;
+}
+.siteTopbar .brand > span:last-child {
+  min-width: 0;
+}
+.siteTopbar .brand b {
+  max-width: min(30vw, 270px);
+  overflow: hidden;
+  color: var(--deep);
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.siteTopbar .brand small {
+  max-width: min(30vw, 270px);
+  overflow: hidden;
+  color: #75827b;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.siteTopbar .brandMark {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(18, 60, 52, 0.08);
+  box-shadow: 0 4px 12px rgba(18, 60, 52, 0.1);
+}
+.siteTopbar .navlinks {
+  min-width: 0;
+  gap: clamp(4px, 0.65vw, 12px);
+}
+.siteTopbar .navlinks > button,
+.siteTopbar .navlinks > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 999px;
+  color: #52615a;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+.siteTopbar .navlinks > button:hover,
+.siteTopbar .navlinks > a:hover {
+  background: #f1f5ee;
+  color: var(--forest);
+  transform: translateY(-1px);
+}
+.siteTopbar .navlinks > .current {
+  background: #edf3e9;
+  color: var(--forest);
+}
+.siteTopbar .navActions {
+  flex: 0 0 auto;
+  gap: 9px;
+}
+.siteTopbar .signIn {
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--forest);
+  font-weight: 800;
+}
+.siteTopbar .navActions > .btn {
+  min-height: 42px;
+  border-radius: 999px;
+  padding-inline: 16px;
+  box-shadow: 0 5px 12px rgba(18, 60, 52, 0.12);
+}
+.siteTopbar .accountBtn {
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid #e6ece5;
+  border-radius: 999px;
+  background: #fff;
+}
+.siteTopbar .accountBtn:hover {
+  border-color: #cad8c7;
+  background: #f7f9f5;
+}
+.siteTopbar .hamburger {
+  border: 1px solid #e4ebe3;
+  background: #fff;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+.siteTopbar .hamburger:hover,
+.siteTopbar .hamburger.open {
+  background: #edf3e9;
+  color: var(--forest);
+}
+@media (max-width: 1100px) and (min-width: 901px) {
+  .siteTopbar .navwrap {
+    gap: 10px;
+    padding-inline: 16px;
+  }
+  .siteTopbar .brand {
+    gap: 8px;
+  }
+  .siteTopbar .brand b {
+    max-width: 180px;
+    font-size: 13px;
+  }
+  .siteTopbar .brand small {
+    max-width: 180px;
+    font-size: 11px;
+  }
+  .siteTopbar .brandMark {
+    width: 39px;
+    height: 39px;
+  }
+  .siteTopbar .navlinks > button,
+  .siteTopbar .navlinks > a {
+    padding-inline: 8px;
+    font-size: 11.5px;
+  }
+  .siteTopbar .navActions {
+    gap: 5px;
+  }
+  .siteTopbar .navActions > .btn {
+    padding-inline: 11px;
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 900px) {
+  .siteTopbar .navwrap {
+    gap: 10px;
+  }
+  .siteTopbar .navlinks {
+    left: 12px;
+    right: 12px;
+    top: calc(100% + 8px);
+    width: auto;
+    max-height: calc(100dvh - 90px - var(--sat, 0px));
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid rgba(18, 60, 52, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 22px 55px rgba(16, 47, 43, 0.2);
+    backdrop-filter: blur(18px);
+  }
+  .siteTopbar .navlinks > button,
+  .siteTopbar .navlinks > a {
+    min-height: 46px;
+    justify-content: flex-start;
+    border-radius: 12px;
+    padding-inline: 14px;
+    font-size: 14px;
+  }
+  .siteTopbar .navlinks > .current {
+    background: #edf3e9;
+  }
+  .siteTopbar .mobileMenuAuth {
+    gap: 9px;
+    padding: 12px 4px 4px;
+  }
+  .siteTopbar .mobileMenuAuth .btn {
+    border-radius: 11px;
+  }
+}
+@media (max-width: 650px) {
+  .siteTopbar .brandMark {
+    width: 38px;
+    height: 38px;
+  }
+  .siteTopbar .brand b {
+    max-width: min(52vw, 250px);
+    font-size: 14px;
+  }
+  .siteTopbar .navActions {
+    gap: 6px;
+  }
+  .siteTopbar .hamburger {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+}
+
+/* Keep trip-card menus above the card boundary and neighboring cards. */
+.adminPage .adminTripCard {
+  position: relative;
+  overflow: visible;
+}
+.adminPage .adminTripCard:focus-within {
+  z-index: 12;
+}
+.adminPage .adminTripPhoto {
+  border-radius: 14px 0 0 14px;
+}
+.adminPage .adminTripActions .actionMenu {
+  z-index: 15;
+}
+
+.manifestActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+}
+.manifestActions .btn {
+  min-height: 34px;
+  padding: 0 10px;
+}
+.manifestActions .btn svg,
+.manifestDeleteBtn svg {
+  width: 14px;
+  height: 14px;
+}
+.manifestDeleteBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 9px;
+}
+.manifestAddDate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--paper);
+}
+.manifestAddDate label {
+  display: grid;
+  flex: 1 1 180px;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+.manifestAddDate input {
+  min-width: 0;
+  min-height: 38px;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+.familyRequestPanel .adminSectionHead p {
+  max-width: 760px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.familyRequestPanel .adminSectionHead {
+  align-items: flex-start;
+  gap: 12px;
+}
+.familyRequestPanel .chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 14px !important;
+}
+.familyRequestPanel .chipRow .btn {
+  min-height: 36px;
+  padding: 0 13px;
+  border-radius: 999px;
+  text-transform: capitalize;
+}
+.familyRequestPanel .familyRequestTableWrap {
+  max-width: 100%;
+}
+.familyRequestPanel .familyRequestTableWrap table {
+  min-width: 1120px;
+}
+.familyRequestPanel .familyRequestTableWrap td,
+.familyRequestPanel .familyRequestTableWrap td > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.familyRequestPanel .familyRequestTableWrap td {
+  white-space: normal;
+}
+.familyRequestPanel .familyRequestTableWrap td b {
+  color: #24372e;
+  font-weight: 800;
+}
+.familyRequestPanel .familyRequestTableWrap td a {
+  color: var(--forest);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #b8c8b2;
+  text-underline-offset: 2px;
+}
+.familyRequestPanel .familyRequestTableWrap .cellSub {
+  color: #738079;
+  line-height: 1.5;
+}
+.familyRequestPanel .familyRequestTableWrap td select,
+.familyRequestPanel .familyRequestTableWrap td input {
+  font-size: 13px;
+}
+.familyRequestPanel .familyRequestField {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 40px;
+  margin: 0 0 7px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+.familyRequestPanel .familyRequestField:disabled {
+  background: #f1f3ef;
+  color: #7b857d;
+}
+.familyRequestPanel .chipRow {
+  gap: 7px;
+}
+.familyRequestPanel .miniChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 27px;
+  padding: 4px 9px;
+  border: 1px solid #d8e6da;
+  border-radius: 999px;
+  background: #edf5ed;
+  color: #275544;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.familyRequestPanel .warnTxt {
+  display: inline-block;
+  max-width: 100%;
+  margin-top: 5px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: #fff3e8;
+  color: #9c4d27;
+  line-height: 1.45;
+}
+.familyRequestPanel .familyRequestTableWrap .actionMenu {
+  position: relative;
+  z-index: 4;
+}
+.familyRequestPanel .familyRequestTableWrap .actionList {
+  max-width: min(260px, calc(100vw - 32px));
+}
+@media (max-width: 650px) {
+  .adminPage .adminTripPhoto {
+    border-radius: 14px 0 0 14px;
+  }
+  .manifestActions > * {
+    flex: 1 1 135px;
+  }
+  .manifestAddDate .btn {
+    flex: 1 1 100%;
+  }
+}
+@media (max-width: 1000px) {
+  .familyRequestPanel .familyRequestTableWrap {
+    overflow: visible;
+    border: 0;
+  }
+  .familyRequestPanel .familyRequestTableWrap table {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  .familyRequestPanel .familyRequestTableWrap thead {
+    display: none;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody {
+    display: grid;
+    gap: 12px;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody tr {
+    display: grid;
+    min-width: 0;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 5px 16px #183b2508;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody td {
+    display: grid;
+    grid-template-columns: minmax(94px, 0.32fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 2px;
+    border-bottom: 1px solid #edf0eb;
+    white-space: normal;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody td:last-child {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+    width: 100%;
+    border: 0;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody td:last-child::before {
+    display: none;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody td.adminEmptyCell {
+    display: block;
+    grid-column: 1 / -1;
+    padding: 18px 10px !important;
+    border: 0;
+    text-align: center;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody td.adminEmptyCell::before {
+    display: none;
+  }
+  .familyRequestPanel .familyRequestTableWrap .familyRequestField {
+    width: 100%;
+  }
+}
+
+/* Family request rows follow the same table rhythm as Booking management. */
+.familyRequestPanel .familyRequestTableWrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+.familyRequestPanel .familyRequestTableWrap table {
+  width: 100%;
+  min-width: 1240px;
+  table-layout: auto;
+  white-space: nowrap;
+}
+.familyRequestPanel .familyRequestTableWrap thead {
+  display: table-header-group;
+}
+.familyRequestPanel .familyRequestTableWrap tbody {
+  display: table-row-group;
+}
+.familyRequestPanel .familyRequestTableWrap tbody tr {
+  display: table-row;
+  height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.familyRequestPanel .familyRequestTableWrap tbody td,
+.familyRequestPanel .familyRequestTableWrap tbody td:last-child {
+  display: table-cell;
+  width: auto;
+  padding: 14px 15px;
+  border-bottom: 1px solid #edf0eb;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.familyRequestPanel .familyRequestTableWrap tbody td::before,
+.familyRequestPanel .familyRequestTableWrap tbody td:last-child::before {
+  display: none;
+  content: none;
+}
+.familyRequestPanel .familyRequestTableWrap .cellSub {
+  white-space: nowrap;
+}
+.familyRequestPanel .familyRequestTableWrap .familyRequestField {
+  width: 170px;
+  max-width: 170px;
+}
+.familyRequestPanel
+  .familyRequestTableWrap
+  td[data-label="Quote and note"]
+  .familyRequestField {
+  width: 190px;
+  max-width: 190px;
+}
+.familyRequestPanel
+  .familyRequestTableWrap
+  td[data-label="Quote and note"]
+  input[type="number"] {
+  width: 120px;
+  max-width: 120px;
+}
+.familyRequestPanel
+  .familyRequestTableWrap
+  td[data-label="Free vehicles"]
+  .chipRow {
+  flex-wrap: nowrap;
+}
+.familyRequestPanel .familyRequestTableWrap td.adminEmptyCell {
+  display: table-cell;
+  padding: 22px !important;
+  text-align: center;
+}
+
+/* Family holidays: consistent spacing and fluid form, fleet and package grids. */
+.familyBookingPage {
+  background: #f5f7f2;
+}
+.familyBookingHero {
+  isolation: isolate;
+  padding: clamp(28px, 5.4vw, 66px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(212, 242, 124, 0.16),
+      transparent 28%
+    ),
+    linear-gradient(128deg, #0f332d 0%, #17483d 53%, #2b6250 100%);
+  box-shadow: 0 22px 55px rgba(14, 49, 40, 0.17);
+}
+.familyBookingHero::after {
+  right: 4%;
+  bottom: -145px;
+  width: clamp(210px, 28vw, 360px);
+  height: clamp(210px, 28vw, 360px);
+  border-color: rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+}
+.familyBookingHero .kicker {
+  color: var(--lime);
+}
+.familyBookingHero h1 {
+  max-width: 760px;
+  margin: 14px 0 12px;
+  font-size: clamp(38px, 5.8vw, 70px);
+  line-height: 1.04;
+  letter-spacing: -2.2px;
+}
+.familyBookingHero h1 em {
+  color: #d4f27c;
+}
+.familyBookingHero > p {
+  max-width: 620px;
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.65;
+}
+.familyBookingPromise {
+  gap: 9px;
+}
+.familyBookingPromise span {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+}
+.familyBookingPromise svg {
+  color: var(--lime);
+}
+.familyRequest {
+  padding: clamp(28px, 4vw, 48px) clamp(0px, 1.2vw, 18px);
+}
+.familyRequest > h2 {
+  max-width: 760px;
+  margin: 7px 0;
+  color: var(--ink);
+  font: 800 clamp(24px, 3.4vw, 34px)/1.12 var(--display);
+  letter-spacing: -0.8px;
+}
+.familyRequest > p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.familyRequest .frCard {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+  margin-top: 18px;
+  padding: clamp(15px, 2.5vw, 28px);
+  border: 1px solid #e2e9e0;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 14px 38px rgba(25, 54, 39, 0.07);
+}
+.familyRequest .frGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.familyRequest .frGrid label {
+  min-width: 0;
+  gap: 7px;
+  color: #38483e;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+.familyRequest .frGrid input,
+.familyRequest .frGrid textarea,
+.familyRequest .frGrid select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #dce5db;
+  border-radius: 11px;
+  background: #fbfcfa;
+  color: var(--ink);
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    background 150ms ease;
+}
+.familyRequest .frGrid textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+.familyRequest .frGrid input:focus,
+.familyRequest .frGrid textarea:focus,
+.familyRequest .frGrid select:focus {
+  border-color: #71937a;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(113, 147, 122, 0.14);
+}
+.familyRequest .frGrid .span {
+  grid-column: 1 / -1;
+}
+.familyRequest .locateWrap {
+  justify-self: start;
+  max-width: 100%;
+}
+.familyRequest .frCard > h3 {
+  margin: 2px 0 -12px;
+  color: var(--deep);
+  font: 800 19px/1.25 var(--display);
+}
+.familyRequest .frCard > .muted {
+  margin: -14px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.familyRequest .vehGrid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 12px;
+  margin: 0;
+}
+.familyRequest .vehCard {
+  min-width: 0;
+  gap: 8px;
+  padding: 13px;
+  border: 1px solid #e0e8de;
+  border-radius: 15px;
+  background: #fbfcfa;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+.familyRequest .vehCard:hover {
+  transform: translateY(-2px);
+  border-color: #b8cbb4;
+}
+.familyRequest .vehCard.on {
+  border-color: #63856a;
+  background: #f4f8f1;
+  box-shadow: 0 0 0 3px rgba(99, 133, 106, 0.12);
+}
+.familyRequest .vehCard img {
+  width: 100%;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 11px;
+  background: #edf1e9;
+}
+.familyRequest .vehCard b {
+  color: var(--deep);
+  font-size: 14px;
+}
+.familyRequest .vehCard small {
+  color: var(--muted);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.familyRequest .vehTag {
+  margin-top: 2px;
+  padding: 5px 9px;
+  border: 1px solid #f0d8cb;
+  background: #fff5ed;
+  color: #984f2f;
+}
+.familyRequest .vehTag.ok {
+  border-color: #cde5d2;
+  background: #edf8ef;
+  color: #236345;
+}
+.familyRequest .frCard > .btn {
+  justify-self: start;
+  min-width: 190px;
+  min-height: 46px;
+  border-radius: 12px;
+}
+.familyPackagesSection {
+  padding: clamp(30px, 5vw, 56px) 0;
+}
+.familyPackagesSection .sectionIntro {
+  align-items: flex-end;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.familyPackagesGrid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+.familyPackageCard {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  border-color: #e2e9e0;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(25, 54, 39, 0.07);
+}
+.familyPackagePhoto {
+  height: clamp(190px, 21vw, 270px);
+  flex: 0 0 auto;
+}
+.familyPackageInfo {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(14px, 1.6vw, 20px);
+}
+.familyPackageInfo h3,
+.familyPackageInfo > p,
+.familyPackagePickup small {
+  overflow-wrap: anywhere;
+}
+.familyPackageInfo > p {
+  min-height: 0;
+}
+.familyPackagePickup {
+  align-items: flex-start;
+  margin-top: auto;
+  border: 1px solid #e8eee5;
+  background: #f5f8f2;
+  color: var(--forest);
+}
+.familyPackagePickup small {
+  color: var(--muted);
+}
+.familyPackageFooter {
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.familyPackageFooter > div {
+  min-width: 0;
+}
+.familyPackageFooter b {
+  color: var(--forest);
+}
+.familyPackageFooter .btn {
+  min-height: 40px;
+  border-radius: 10px;
+}
+.familyHelpCallout {
+  margin: 8px 0 12px;
+  border-color: #e2e9e0;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(25, 54, 39, 0.05);
+}
+.familyHelpCallout h2 {
+  color: var(--deep);
+}
+.familyHelpCallout .btn {
+  border-radius: 11px;
+}
+@media (max-width: 760px) {
+  .familyBookingPage {
+    padding: 18px 14px 34px;
+  }
+  .familyBookingHero {
+    padding: 26px 22px;
+    border-radius: 20px;
+  }
+  .familyBookingHero h1 {
+    max-width: 100%;
+    font-size: clamp(36px, 9.5vw, 52px);
+    letter-spacing: -1.5px;
+  }
+  .familyBookingHero h1 br {
+    display: none;
+  }
+  .familyBookingPromise {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .familyBookingPromise span {
+    max-width: 100%;
+    min-height: 38px;
+  }
+  .familyRequest {
+    padding: 30px 0;
+  }
+  .familyRequest .frCard {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .familyRequest .frGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .familyPackagesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  }
+  .familyPackagesSection .sectionIntro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .familyPackagesSection .sectionIntro > p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .familyBookingPage {
+    padding-inline: 12px;
+  }
+  .familyBookingHero {
+    padding: 24px 17px;
+  }
+  .familyBookingHero h1 {
+    font-size: clamp(34px, 10vw, 46px);
+  }
+  .familyRequest .frGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .familyRequest .frGrid .span {
+    grid-column: auto;
+  }
+  .familyRequest .frCard > .btn {
+    width: 100%;
+  }
+  .familyPackageFooter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .familyPackageFooter .btn {
+    width: 100%;
+  }
+}
+
+/* Let trip and departure cards use the available width at every breakpoint. */
+.adminPage .adminTripGrid,
+.adminPage .manifestGrid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  align-items: stretch;
+}
+.adminPage .adminTripCard,
+.adminPage .manifestCard {
+  min-width: 0;
+}
+@media (min-width: 1280px) {
+  .adminPage .adminTripGrid,
+  .adminPage .manifestGrid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .adminPage .adminTripGrid,
+  .adminPage .manifestGrid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+    gap: 12px;
+  }
+}
+
+/* Photo and video galleries share the same neutral card and section palette. */
+.memoryTypeSection:has(.proVideo),
+.memoryTypeSection:has(.mediaEmbed) {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.memoryTypeSection:has(.proVideo) h3,
+.memoryTypeSection:has(.mediaEmbed) h3 {
+  color: #2c3d69;
+}
+.memoryTypeSection:has(.proVideo) .memoryTypeHeading small,
+.memoryTypeSection:has(.mediaEmbed) .memoryTypeHeading small {
+  color: var(--muted);
+}
+.memoryTypeSection:has(.proVideo) .memoryCard,
+.memoryTypeSection:has(.mediaEmbed) .memoryCard {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e1e5ee;
+  border-radius: 13px;
+  background: #fff;
+  color: var(--ink);
+}
+.memoryTypeSection:has(.proVideo) .memoryCard small,
+.memoryTypeSection:has(.proVideo) .memoryCard p,
+.memoryTypeSection:has(.mediaEmbed) .memoryCard small,
+.memoryTypeSection:has(.mediaEmbed) .memoryCard p {
+  color: #777f92;
+}
+.memoryTypeSection:has(.proVideo) .memoryCard h4,
+.memoryTypeSection:has(.mediaEmbed) .memoryCard h4 {
+  color: #2d3d67;
+}
+.memoryTypeSection:has(.proVideo) .memoryCard:first-child,
+.memoryTypeSection:has(.mediaEmbed) .memoryCard:first-child {
+  grid-column: auto;
+  display: block;
+}
+.memoryTypeSection .memoryGrid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+}
+.memoryMediaStage {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+  overflow: hidden;
+  background: #f1f3ee;
+  cursor: zoom-in;
+}
+.memoryCard > .memoryMediaStage {
+  padding: 0;
+}
+.memoryMediaStage > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.memoryMediaStage .proVideo,
+.memoryMediaStage .mediaEmbed {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
+  box-shadow: none;
+  background: #f1f3ee;
+}
+.memoryMediaStage .proVideo video {
+  object-fit: contain;
+  background: #f1f3ee;
+}
+.memoryMediaStage .proVideo::after {
+  background: linear-gradient(180deg, transparent 58%, rgba(18, 60, 52, 0.24));
+}
+.memoryExpand {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 4;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  background: rgba(18, 60, 52, 0.78);
+  color: #fff;
+  cursor: zoom-in;
+}
+.memoryExpand svg {
+  width: 17px;
+  height: 17px;
+}
+.memoryLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 60px 20px 20px;
+  background: rgba(8, 15, 13, 0.96);
+}
+.memoryLightboxClose {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  z-index: 2;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+}
+.memoryLightboxClose svg {
+  width: 21px;
+  height: 21px;
+}
+.memoryLightboxContent {
+  display: grid;
+  width: min(100%, 1500px);
+  max-height: 100%;
+  justify-items: center;
+  gap: 12px;
+}
+.memoryLightboxContent > img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100dvh - 120px);
+  object-fit: contain;
+}
+.memoryLightboxContent .proVideo,
+.memoryLightboxContent .mediaEmbed {
+  width: min(100%, 1320px);
+  max-height: calc(100dvh - 120px);
+  aspect-ratio: 16 / 9;
+  background: #080f0d;
+}
+.memoryLightboxContent .proVideo video,
+.memoryLightboxContent .mediaEmbed iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.memoryLightboxContent .mediaFallback {
+  width: min(100%, 700px);
+}
+.memoryLightboxContent > p {
+  margin: 0;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .memoryLightbox {
+    padding: 58px 10px 12px;
+  }
+  .memoryLightboxContent > img {
+    max-height: calc(100dvh - 105px);
+  }
+  .memoryLightboxContent .proVideo,
+  .memoryLightboxContent .mediaEmbed {
+    max-height: calc(100dvh - 105px);
+  }
+}
+
+/* Match the Booking table: keep each family request on one horizontal row. */
+@media (max-width: 1000px) {
+  .familyRequestPanel .familyRequestTableWrap {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    -webkit-overflow-scrolling: touch;
+  }
+  .familyRequestPanel .familyRequestTableWrap table {
+    display: table;
+    width: 100%;
+    min-width: 1240px;
+    table-layout: auto;
+    white-space: nowrap;
+  }
+  .familyRequestPanel .familyRequestTableWrap thead {
+    display: table-header-group;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody {
+    display: table-row-group;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody tr {
+    display: table-row;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody td,
+  .familyRequestPanel .familyRequestTableWrap tbody td:last-child {
+    display: table-cell;
+    width: auto;
+    padding: 13px 14px;
+    border-bottom: 1px solid #edf0eb;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody td::before,
+  .familyRequestPanel .familyRequestTableWrap tbody td:last-child::before {
+    display: none;
+    content: none;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody td.adminEmptyCell {
+    display: table-cell;
+    padding: 18px !important;
+    text-align: center;
+  }
+  .familyRequestPanel .familyRequestTableWrap tbody td .familyRequestField {
+    width: 170px;
+    max-width: 170px;
+  }
+}
+
+@media (max-width: 760px) {
+  .memoryTypeSection .memoryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .memoryTypeSection .memoryCard {
+    min-width: 0;
+    border-radius: 12px;
+  }
+  .memoryTypeSection .memoryCard > div {
+    padding: 9px;
+  }
+  .memoryTypeSection .memoryCard h4 {
+    font-size: 11px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+  .memoryTypeSection .memoryCard p,
+  .memoryTypeSection .memoryCard small {
+    font-size: 10px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+  .memoryTypeSection .memoryMediaStage {
+    aspect-ratio: 1/1;
+  }
+}
+
+.homepageTripTools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  margin: 0 0 18px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(18, 60, 52, 0.06);
+}
+.homepageTripSearch {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid #dce4dd;
+  border-radius: 12px;
+  background: #fbfcfa;
+  color: #73847a;
+}
+.homepageTripSearch svg {
+  width: 19px;
+  flex: 0 0 auto;
+}
+.homepageTripSearch input {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  border: 0 !important;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  box-shadow: none !important;
+}
+.homepageTripTools > .btn {
+  min-height: 46px;
+  white-space: nowrap;
+}
+.tripRequestDashboardForm {
+  margin: 0 0 22px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 9px 28px rgba(18, 60, 52, 0.06);
+}
+.tripRequestDashboardForm .adminSectionHead {
+  margin-bottom: 16px;
+}
+.tripRequestDashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.tripRequestDashboardGrid > label {
+  display: grid;
+  min-width: 0;
+  gap: 7px;
+  color: #40544a;
+  font-size: 13px;
+  font-weight: 750;
+}
+.tripRequestDashboardGrid input,
+.tripRequestDashboardGrid select,
+.tripRequestDashboardGrid textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #dce4dd;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+.tripRequestDashboardGrid textarea {
+  resize: vertical;
+}
+.tripRequestDashboardGrid input:focus,
+.tripRequestDashboardGrid select:focus,
+.tripRequestDashboardGrid textarea:focus {
+  outline: 3px solid #dcebe2;
+  border-color: #688a72;
+}
+.tripRequestDashboardGrid > label.tripRequestDashboardNotes {
+  grid-column: 1/-1;
+}
+.tripRequestDashboardActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 16px;
+}
+.tripRequestDashboardActions small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+.tripRequestDashboardActions .btn {
+  flex: 0 0 auto;
+}
+.familyRequestPanel {
+  min-width: 0;
+}
+.familyRequestPanel .adminSectionHead {
+  padding: 4px 2px 14px;
+  border-bottom: 1px solid #e7eee8;
+}
+.familyRequestPanel .adminSectionHead h2 {
+  color: #183d33;
+  font-size: 22px;
+  letter-spacing: -0.35px;
+}
+.familyRequestPanel .adminSectionHead h2 small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 25px;
+  margin-left: 6px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: #e9f3e9;
+  color: #326249;
+  font-size: 12px;
+}
+.familyRequestPanel .adminSectionHead p {
+  margin-top: 6px;
+  color: #728078;
+  font-size: 13px;
+}
+.familyRequestPanel > .chipRow {
+  padding: 7px;
+  border: 1px solid #e5ece6;
+  border-radius: 14px;
+  background: #f7faf7;
+}
+.familyRequestPanel .familyRequestTableWrap {
+  border: 1px solid #dfe8e0;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(18, 60, 52, 0.05);
+}
+.familyRequestPanel .familyRequestTableWrap table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.familyRequestPanel .familyRequestTableWrap thead th {
+  padding: 13px 14px;
+  background: #173f35;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.035em;
+  text-align: left;
+  vertical-align: middle;
+}
+.familyRequestPanel .familyRequestTableWrap thead th:first-child {
+  border-top-left-radius: 12px;
+}
+.familyRequestPanel .familyRequestTableWrap thead th:last-child {
+  border-top-right-radius: 12px;
+}
+.familyRequestPanel .familyRequestTableWrap tbody td {
+  padding: 13px 14px;
+  border-bottom: 1px solid #edf1ed;
+  color: #46574e;
+  font-size: 12px;
+  line-height: 1.5;
+  vertical-align: top;
+}
+.familyRequestPanel .familyRequestTableWrap tbody tr:last-child td {
+  border-bottom: 0;
+}
+.familyRequestPanel .familyRequestTableWrap tbody tr:hover td {
+  background: #f9fbf8;
+}
+.familyRequestPanel .familyRequestTableWrap td[data-label="Family"] > b,
+.familyRequestPanel .familyRequestTableWrap td[data-label="Trip"] > b {
+  display: block;
+  margin-bottom: 4px;
+  color: #203b30;
+  font-size: 13px;
+}
+.familyRequestPanel .familyRequestTableWrap td .familyRequestField {
+  min-height: 40px;
+  border: 1px solid #dce5dd;
+  border-radius: 9px;
+  background: #fff;
+  color: #35483d;
+  font-size: 12px;
+}
+.familyRequestPanel .familyRequestTableWrap td button.btn {
+  min-height: 35px;
+  border-radius: 9px;
+  font-size: 11px;
+}
+.familyRequestPanel .familyRequestTableWrap .miniChip {
+  font-size: 10px;
+  line-height: 1.25;
+}
+@media (max-width: 620px) {
+  .homepageTripTools {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 11px;
+  }
+  .homepageTripTools > .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .tripRequestDashboardForm {
+    padding: 15px;
+  }
+  .tripRequestDashboardGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .tripRequestDashboardGrid > label.tripRequestDashboardNotes {
+    grid-column: auto;
+  }
+  .tripRequestDashboardActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .tripRequestDashboardActions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Trip Memories: fixed card widths and full image display */
+.memoryTypeSection .memoryGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px;
+}
+
+.memoryTypeSection .memoryCard {
+  width: 100%;
+  min-width: 0;
+}
+
+.memoryTypeSection .memoryMediaStage {
+  width: 100%;
+  height: 180px;
+  aspect-ratio: auto;
+  overflow: hidden;
+}
+
+.memoryTypeSection .memoryMediaStage > img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+@media (max-width: 1000px) {
+  .memoryTypeSection .memoryGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .memoryTypeSection .memoryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px;
+  }
+
+  .memoryTypeSection .memoryMediaStage {
+    height: 145px;
+  }
+}
+
+/* Family Requests: keep long details inside their table cells */
+.adminPage #family .familyRequestTableWrap table {
+  width: 100%;
+  min-width: 1320px;
+  table-layout: fixed;
+}
+
+.adminPage #family .familyRequestTableWrap th,
+.adminPage #family .familyRequestTableWrap tbody td,
+.adminPage #family .familyRequestTableWrap tbody td:last-child {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+/* Column widths: Family, Trip, Chosen, Free, Assign, Quote, Status, Actions */
+.adminPage #family .familyRequestTableWrap th:nth-child(1),
+.adminPage #family .familyRequestTableWrap td:nth-child(1) {
+  width: 175px;
+}
+
+.adminPage #family .familyRequestTableWrap th:nth-child(2),
+.adminPage #family .familyRequestTableWrap td:nth-child(2) {
+  width: 280px;
+}
+
+.adminPage #family .familyRequestTableWrap th:nth-child(3),
+.adminPage #family .familyRequestTableWrap td:nth-child(3) {
+  width: 145px;
+}
+
+.adminPage #family .familyRequestTableWrap th:nth-child(4),
+.adminPage #family .familyRequestTableWrap td:nth-child(4) {
+  width: 180px;
+}
+
+.adminPage #family .familyRequestTableWrap th:nth-child(5),
+.adminPage #family .familyRequestTableWrap td:nth-child(5) {
+  width: 145px;
+}
+
+.adminPage #family .familyRequestTableWrap th:nth-child(6),
+.adminPage #family .familyRequestTableWrap td:nth-child(6) {
+  width: 165px;
+}
+
+.adminPage #family .familyRequestTableWrap th:nth-child(7),
+.adminPage #family .familyRequestTableWrap td:nth-child(7) {
+  width: 145px;
+}
+
+.adminPage #family .familyRequestTableWrap th:nth-child(8),
+.adminPage #family .familyRequestTableWrap td:nth-child(8) {
+  width: 70px;
+}
+
+.adminPage #family .familyRequestTableWrap td .cellSub {
+  display: block;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+  margin-top: 4px;
+}
+
+.adminPage #family .familyRequestTableWrap td .familyRequestField {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.adminPage
+  #family
+  .familyRequestTableWrap
+  td[data-label="Free vehicles"]
+  .chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+@media (max-width: 760px) {
+  .adminPage #family .familyRequestTableWrap {
+    max-width: 100%;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .adminPage #family .familyRequestTableWrap table {
+    min-width: 1320px;
+  }
+}
+
+/* Compact admin trip cards: keep both catalogue and departure grids dense on phones. */
+.adminPage .adminTripGrid,
+.adminPage .manifestGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 14px;
+}
+
+.adminPage .adminTripCard,
+.adminPage .manifestCard {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+}
+
+.adminPage .adminTripPhoto,
+.adminPage .manifestPhoto {
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.adminPage .adminTripInfo,
+.adminPage .manifestContent {
+  min-width: 0;
+  padding: 12px;
+}
+
+.adminPage .adminTripInfo h3,
+.adminPage .manifestContent h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.adminPage .adminTripInfo > p {
+  min-height: 0;
+  -webkit-line-clamp: 2;
+}
+
+.adminPage .adminTripInfo > small,
+.adminPage .manifestContent > p,
+.adminPage .manifestPickupInfo {
+  overflow-wrap: anywhere;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.adminPage .adminTripMeta {
+  margin: 9px 0;
+}
+
+.adminPage .adminTripActions,
+.adminPage .manifestActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.adminPage .manifestStats {
+  gap: 5px;
+  margin: 8px 0;
+}
+
+.adminPage .manifestStats span {
+  min-width: 0;
+  padding: 6px;
+  overflow-wrap: anywhere;
+  font-size: 10px;
+}
+
+@media (max-width: 900px) {
+  .adminPage .adminTripGrid,
+  .adminPage .manifestGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .adminPage .adminTripGrid,
+  .adminPage .manifestGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .adminPage .adminTripInfo,
+  .adminPage .manifestContent {
+    padding: 9px;
+  }
+
+  .adminPage .adminTripInfo h3,
+  .adminPage .manifestContent h3 {
+    font-size: 12px;
+  }
+
+  .adminPage .adminTripActions .btn,
+  .adminPage .manifestActions .btn {
+    min-height: 32px;
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+}
+
+/* Keep family request quote, note, status and save controls aligned in each row. */
+.adminPage #family .familyRequestTableWrap table {
+  min-width: 1540px;
+}
+
+.adminPage #family .familyRequestTableWrap th:nth-child(1),
+.adminPage #family .familyRequestTableWrap td:nth-child(1) {
+  width: 165px;
+}
+.adminPage #family .familyRequestTableWrap th:nth-child(2),
+.adminPage #family .familyRequestTableWrap td:nth-child(2) {
+  width: 250px;
+}
+.adminPage #family .familyRequestTableWrap th:nth-child(3),
+.adminPage #family .familyRequestTableWrap td:nth-child(3) {
+  width: 145px;
+}
+.adminPage #family .familyRequestTableWrap th:nth-child(4),
+.adminPage #family .familyRequestTableWrap td:nth-child(4) {
+  width: 210px;
+}
+.adminPage #family .familyRequestTableWrap th:nth-child(5),
+.adminPage #family .familyRequestTableWrap td:nth-child(5) {
+  width: 165px;
+}
+.adminPage #family .familyRequestTableWrap th:nth-child(6),
+.adminPage #family .familyRequestTableWrap td:nth-child(6) {
+  width: 310px;
+}
+.adminPage #family .familyRequestTableWrap th:nth-child(7),
+.adminPage #family .familyRequestTableWrap td:nth-child(7) {
+  width: 220px;
+}
+.adminPage #family .familyRequestTableWrap th:nth-child(8),
+.adminPage #family .familyRequestTableWrap td:nth-child(8) {
+  width: 75px;
+}
+
+.adminPage #family .familyQuoteFields,
+.adminPage #family .familyStatusControls {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.adminPage #family .familyQuoteFields .familyRequestField:first-child {
+  flex: 0 0 92px;
+}
+
+.adminPage #family .familyQuoteFields .familyRequestField:last-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.adminPage #family .familyStatusControls .familyRequestField {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.adminPage #family .familyStatusControls .btn {
+  flex: 0 0 auto;
+  min-width: 66px;
+  white-space: nowrap;
+}
+
+.adminPage #family .familyRequestTableWrap td .familyRequestField {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .adminPage #family .familyRequestTableWrap {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .adminPage #family .familyRequestTableWrap table {
+    min-width: 1540px;
+  }
+}
