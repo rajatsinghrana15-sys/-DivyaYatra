@@ -1,36 +1,71 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#17284b" />
-  <meta name="description" content="Discover India with Yatra Sang Raghuvanshi. Curated journeys starting from Ambala." />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Yatra Sang" />
-  <title>Yatra Sang Raghuvanshi | India, apne andaaz mein</title>
-  <meta property="og:title" content="Yatra Sang Raghuvanshi | India, apne andaaz mein" />
-  <meta property="og:description" content="Curated group journeys across India, starting from Ambala." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/icon-512.png" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* Shown instantly, before JS loads, so the app never flashes white. */
-    html,body{background:#f4f6f9}
-    #boot{position:fixed;inset:0;display:grid;place-items:center;background:#0e1a33;z-index:400}
-    #boot img{width:96px;height:96px;border-radius:24px;animation:bootPulse 1.4s ease-in-out infinite}
-    @keyframes bootPulse{50%{transform:scale(.92);opacity:.8}}
-  </style>
-</head>
-<body>
-  <div id="boot"><img src="/icon-192.png" alt="" /></div>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#17284b" />
+    <meta
+      name="description"
+      content="Discover India with Yatra Sang Raghuvanshi. Curated journeys starting from Ambala."
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Yatra Sang" />
+    <title>DivyaYatra | India, apne andaaz mein</title>
+    <meta property="og:title" content="DivyaYatra | India, apne andaaz mein" />
+    <meta
+      property="og:description"
+      content="Curated group journeys across India, starting from Ambala."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/icon-512.png?v=2" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hind:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Shown instantly, before JS loads, so the app never flashes white. */
+      html,
+      body {
+        background: #f4f6f9;
+      }
+      #boot {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: #0e1a33;
+        z-index: 400;
+      }
+      #boot img {
+        width: 96px;
+        height: 96px;
+        border-radius: 24px;
+        animation: bootPulse 1.4s ease-in-out infinite;
+      }
+      @keyframes bootPulse {
+        50% {
+          transform: scale(0.92);
+          opacity: 0.8;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="boot"><img src="/icon-192.png?v=2" alt="" /></div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

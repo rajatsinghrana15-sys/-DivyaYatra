@@ -1,16 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
   <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d3566"/><stop offset="1" stop-color="#0e1a33"/></linearGradient>
-    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd27a"/><stop offset="1" stop-color="#f2a22c"/></linearGradient>
-    <linearGradient id="peak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cdd8f0"/></linearGradient>
+    <linearGradient id="bg" x1="68" y1="36" x2="454" y2="484" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17243B"/>
+      <stop offset="1" stop-color="#0C1426"/>
+    </linearGradient>
+    <linearGradient id="route" x1="205" y1="199" x2="302" y2="338" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE08A"/>
+      <stop offset=".52" stop-color="#FFB85C"/>
+      <stop offset="1" stop-color="#F28C5B"/>
+    </linearGradient>
+    <linearGradient id="waypoint" x1="247" y1="241" x2="267" y2="263" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#91F2D8"/>
+      <stop offset="1" stop-color="#46CDB8"/>
+    </linearGradient>
+    <filter id="shadow" x="80" y="87" width="352" height="354" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#030817" flood-opacity=".35"/>
+    </filter>
   </defs>
-  <rect width="512" height="512" rx="116" fill="url(#sky)"/>
-  <circle cx="256" cy="212" r="92" fill="url(#sun)"/>
-  <g stroke="#ffd27a" stroke-width="12" stroke-linecap="round" opacity=".9">
-    <path d="M256 78v-22M150 122l-16-16M362 122l16-16M104 212H80M408 212h24"/>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <path d="M43 340c72-66 113-95 180-107 93-17 160 5 246 76" stroke="#D9E5F7" stroke-opacity=".045" stroke-width="2"/>
+  <path d="M34 381c84-74 132-103 205-113 88-12 154 11 238 76" stroke="#D9E5F7" stroke-opacity=".035" stroke-width="2"/>
+  <g filter="url(#shadow)">
+    <path d="M163 139v234h82c70 0 111-42 111-117s-41-117-111-117h-82Z" stroke="#F4F2EB" stroke-width="31" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="m211 205 45 46 46-46M256 251v78" stroke="url(#route)" stroke-width="21" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="211" cy="205" r="8" fill="#FFE08A"/>
+    <circle cx="302" cy="205" r="8" fill="#F28C5B"/>
+    <circle cx="256" cy="251" r="15" fill="url(#waypoint)" stroke="#152238" stroke-width="8"/>
+    <circle cx="256" cy="329" r="8" fill="#F28C5B"/>
   </g>
-  <path d="M-20 560 196 238l56 70 52-62L532 560Z" fill="url(#peak)"/>
-  <path d="m196 238 34 42-30-14-26 20 22-48Zm108 8 30 38-30-14-24 20 24-44Z" fill="#9fb2dd"/>
-  <path d="M232 512 250 392h12l18 120Z" fill="#f2a22c"/>
-  <path d="M256 408v20m0 20v20" stroke="#0e1a33" stroke-width="7" stroke-linecap="round"/>
 </svg>

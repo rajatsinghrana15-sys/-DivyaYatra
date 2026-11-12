@@ -7,6 +7,10 @@ import "./loaders.css";
 import "./responsive.css";
 import "./polish.css";
 
-createRoot(document.getElementById("root")).render(<React.StrictMode><App /></React.StrictMode>);
+createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
 // Remove the pre-JS splash once React has painted.
 requestAnimationFrame(() => document.getElementById("boot")?.remove());
