@@ -59,6 +59,17 @@ The backend can send WhatsApp messages for booking requests, cancellations, and 
 
 The matching blank variables are in `server/.env.example`. Keep the access token private. If these credentials are blank, bookings still work and no WhatsApp messages are sent.
 
+## Deploy on Render
+
+Deploy the API and website as separate Render services. For the API Web Service, set the root directory to `server`, build command to `npm install`, and start command to `npm start`. Add these values under the service's **Environment** settings; Render does not read your local `server/.env` file:
+
+- `MONGODB_URI` — MongoDB Atlas connection string for the production database.
+- `JWT_SECRET` — a long, unique random value.
+- `ADMIN_NAME`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD` — initial admin credentials; use a unique password of at least 12 characters.
+- `CLIENT_URL` — the deployed website's full HTTPS origin, such as `https://your-site.onrender.com`.
+
+For the website, create a Render Static Site with root directory `client`, build command `npm install && npm run build`, and publish directory `dist`. Set the build-time variable `VITE_API_URL` to the API service's full HTTPS URL, without a trailing `/api` (for example, `https://your-api.onrender.com`). After changing the website URL, update `CLIENT_URL` on the API and redeploy it. In MongoDB Atlas, add a Network Access rule that permits connections from Render; Atlas must accept the API service's outbound IPs or use its documented all-IP rule for services with dynamic outbound IPs. Never put database credentials or JWT secrets in the client or commit a real `.env` file.
+
 The booking form records passenger totals by adult men, adult women, and children; it does not ask for individual passenger names. Admins can review these counts, contact details, seats, and trip in the dashboard. The dashboard sidebar jumps to Overview, Trips, Upcoming departures, Categories, Bookings, Travellers, and Website settings.
 
 ## Trip and brand photos
