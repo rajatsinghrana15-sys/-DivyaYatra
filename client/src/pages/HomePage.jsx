@@ -79,15 +79,18 @@ export default function HomePage() {
   today.setHours(0, 0, 0, 0);
   const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
   const upcomingTrips = Array.from(
-    trips.reduce((byTrip, trip) => {
-      const nextDate = (trip.departureDates || [])
-        .map((date) => new Date(date))
-        .filter((date) => !Number.isNaN(date.getTime()) && date >= today)
-        .sort((a, b) => a - b)[0];
-      const id = String(trip._id);
-      if (nextDate && !byTrip.has(id)) byTrip.set(id, { trip, date: nextDate });
-      return byTrip;
-    }, new Map()).values(),
+    trips
+      .reduce((byTrip, trip) => {
+        const nextDate = (trip.departureDates || [])
+          .map((date) => new Date(date))
+          .filter((date) => !Number.isNaN(date.getTime()) && date >= today)
+          .sort((a, b) => a - b)[0];
+        const id = String(trip._id);
+        if (nextDate && !byTrip.has(id))
+          byTrip.set(id, { trip, date: nextDate });
+        return byTrip;
+      }, new Map())
+      .values(),
   ).sort((a, b) => a.date - b.date);
   const selectOfferedDestination = (destination) => {
     setCatalogue((current) => ({
@@ -229,10 +232,7 @@ export default function HomePage() {
                 );
                 const soldOut = seatsLeft <= 0;
                 return (
-                  <article
-                    className="upcomingCard"
-                    key={trip._id}
-                  >
+                  <article className="upcomingCard" key={trip._id}>
                     <button
                       className="upcomingPhoto"
                       onClick={() => go("trip", trip)}
@@ -274,7 +274,9 @@ export default function HomePage() {
                           ? "Seats full"
                           : `${seatsLeft} of ${trip.vehicleTotalSeats || trip.maxGroupSize || 20} seats left`}
                       </div>
-                      <b className="upcomingPrice">{cash(trip.price)} <small>/ person</small></b>
+                      <b className="upcomingPrice">
+                        {cash(trip.price)} <small>/ person</small>
+                      </b>
                       {!soldOut && (
                         <button
                           className="btn btn-dark btn-sm"
@@ -305,12 +307,24 @@ export default function HomePage() {
               <input
                 type="search"
                 value={catalogue.search}
-                onChange={(event) => setCatalogue((current) => ({ ...current, search: event.target.value }))}
+                onChange={(event) =>
+                  setCatalogue((current) => ({
+                    ...current,
+                    search: event.target.value,
+                  }))
+                }
                 placeholder="Search trips, destinations or places"
                 aria-label="Search trips and destinations"
               />
             </label>
-            <button className="btn btn-dark" onClick={() => user ? go("mybookings", { dashboardTab: "requests" }) : go("auth")}>
+            <button
+              className="btn btn-dark"
+              onClick={() =>
+                user
+                  ? go("mybookings", { dashboardTab: "requests" })
+                  : go("auth")
+              }
+            >
               Plan a trip <ArrowRight />
             </button>
           </div>
@@ -414,7 +428,7 @@ export default function HomePage() {
           <div className="aboutBand" id="about">
             <div className="aboutPhoto">
               <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1100&q=85"
+                src="https://i.pinimg.com/1200x/d3/d1/86/d3d1863f7dd80e291748992428e459ce.jpg"
                 alt="Open road through scenic landscape"
               />
               <span className="photoBadge">
