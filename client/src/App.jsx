@@ -622,7 +622,7 @@ export default function App() {
         `/auth/${authMode === "signup" ? "register" : "login"}`,
         { method: "POST", body },
       );
-      saveToken(r.token);
+      local.set("yatra_token", r.token);
       setUser(r.user);
       go(isTeam(r.user) ? "admin" : "home");
       notice(`Welcome, ${r.user.name.split(" ")[0]}!`);
