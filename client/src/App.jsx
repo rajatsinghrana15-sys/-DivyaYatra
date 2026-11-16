@@ -14,7 +14,7 @@ import {
   UserRound,
   Send,
 } from "lucide-react";
-import { api, token } from "./services/api";
+import { api, token, local, session } from "./services/api";
 import { AppContext, useApp } from "./context/AppContext";
 import Header from "./components/layout/Header";
 import TripCard from "./components/trips/TripCard";
@@ -207,13 +207,13 @@ function MobileAppBar() {
 
 export default function App() {
   const [page, setPage] = useState(() => {
-      const savedPage = sessionStorage.getItem("yatra_current_page");
+      const savedPage = session.get("yatra_current_page");
       return token() && ["admin", "mybookings"].includes(savedPage)
         ? savedPage
         : "home";
     }),
     [adminSection, setAdminSectionState] = useState(
-      () => sessionStorage.getItem("yatra_admin_section") || "overview",
+      () => session.get("yatra_admin_section") || "overview",
     ),
     [initialLoading, setInitialLoading] = useState(true),
     [paymentConfig, setPaymentConfig] = useState({
@@ -307,16 +307,16 @@ export default function App() {
         .then((r) => {
           setUser(r.user);
           if (
-            sessionStorage.getItem("yatra_current_page") === "admin" &&
+            session.get("yatra_current_page") === "admin" &&
             !isTeam(r.user)
           ) {
-            sessionStorage.removeItem("yatra_current_page");
+            session.remove("yatra_current_page");
             setPage("home");
           }
         })
         .catch(() => {
-          localStorage.removeItem("yatra_token");
-          sessionStorage.removeItem("yatra_current_page");
+          removeToken();
+          session.remove("yatra_current_page");
           setPage("home");
         });
     return () => clearTimeout(loaderFailsafe);
@@ -346,9 +346,9 @@ export default function App() {
             : null,
       );
       if (["admin", "mybookings"].includes(nextPage))
-        sessionStorage.setItem("yatra_current_page", nextPage);
-      else sessionStorage.removeItem("yatra_current_page");
-      sessionStorage.setItem("yatra_admin_section", nextSection);
+        session.set("yatra_current_page", nextPage);
+      else session.remove("yatra_current_page");
+      session.set("yatra_admin_section", nextSection);
       window.scrollTo({ top: Number(state?.scrollY || 0), behavior: "smooth" });
     };
     window.addEventListener("popstate", restore);
@@ -547,8 +547,8 @@ export default function App() {
     setChosen(item);
     setPage(p);
     if (["admin", "mybookings"].includes(p))
-      sessionStorage.setItem("yatra_current_page", p);
-    else sessionStorage.removeItem("yatra_current_page");
+      session.set("yatra_current_page", p);
+    else session.remove("yatra_current_page");
     setMenu(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -571,7 +571,7 @@ export default function App() {
       window.location.href,
     );
     setAdminSectionState(section);
-    sessionStorage.setItem("yatra_admin_section", section);
+    session.set("yatra_admin_section", section);
   };
   const goToSection = (id) => {
     const recordAndScroll = () => {
@@ -606,8 +606,8 @@ export default function App() {
     recordAndScroll();
   };
   const logout = () => {
-    localStorage.removeItem("yatra_token");
-    sessionStorage.removeItem("yatra_current_page");
+    local.remove("yatra_token");
+    session.remove("yatra_current_page");
     setUser(null);
     go("home");
     notice("Signed out");
@@ -622,7 +622,7 @@ export default function App() {
         `/auth/${authMode === "signup" ? "register" : "login"}`,
         { method: "POST", body },
       );
-      localStorage.setItem("yatra_token", r.token);
+      saveToken(r.token);
       setUser(r.user);
       go(isTeam(r.user) ? "admin" : "home");
       notice(`Welcome, ${r.user.name.split(" ")[0]}!`);
